@@ -1,7 +1,7 @@
 import re
 
 dictionary = []
-lineCounter = 0
+lineCounter = 1
 delimiters = set(':;.')
 
 def main():
@@ -22,12 +22,11 @@ def readLine(line):
         if any((d in delimiters) for d in word): # Dummy way to search delimiters
             strDelimiter = word[len(word)-1] # Get delimiter string
             dictionary.append("Token: " + word.replace(strDelimiter, "") + ", at line: " + str(lineCounter)) # Remove delimiter from word
-            dictionary.append("Token: " + strDelimiter +  " classified as: Delimiter, at line: " + str(lineCounter)) # Print delimiter
+            dictionary.append("Token: " + strDelimiter +  " labeled as: Delimiter, at line: " + str(lineCounter)) # Print delimiter
         else: # If none delimiter was found
             dictionary.append("Token: " + word + ", at line: " + str(lineCounter))
 
 def printDictionary():
-    global dictionary
     for line in dictionary:
         print line
 
