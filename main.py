@@ -16,7 +16,7 @@ def readArchive(path):
             lineCounter = lineCounter + 1
 
 def readLine(line):
-    line = re.sub(r'{.*$', "", line) # Remove Commentaries '{}'
+    line = re.sub(r'{.*}', "", line) # Remove Commentaries '{}'
     split = line.split(); # Split line into tokens
     for word in split:
         if any((d in delimiters) for d in word): # Dummy way to search delimiters
