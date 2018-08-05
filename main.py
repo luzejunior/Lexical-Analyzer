@@ -19,7 +19,13 @@ def main():
 def readArchive(path):
     global lineCounter
     with open(path, "r") as file:
-        for line in file:
+        source_code = file.read()
+        source_code = re.sub(r'\n','\\c',source_code)
+        source_code = re.sub(r'{.*}','',source_code)
+        source_code = re.sub(r'\\c',r'\n',source_code)
+        lines = source_code.splitlines()
+
+        for line in lines:
             readLine(line)
             lineCounter = lineCounter + 1
 
@@ -52,7 +58,7 @@ def analyze(tokens):
         # Analyzing if it is  a integer
         # Note that tokens like 33ff will be identified as integer
         # But, in fact it a combination of both integer and identifier
-        # Therefore, they'll be broken into two parts, putting the second
+        # Therefor  e, they'll be broken into two parts, putting the second
         # to be analyzed again
         match = re.match(r'\d+', word)
         if match:
@@ -86,13 +92,13 @@ def analyze(tokens):
 def analyze_symbols(tokens):
     for symbol in tokens:
         if symbol in delimiters:
-            dictionary.append([symbol,'delimiter',lineCounter])
+            dictionary.append([symbol, 'delimiter', lineCounter])
         elif symbol in sum_operators:
-            dictionary.append([symbol,'sum_operator',lineCounter])
+            dictionary.append([symbol, 'sum_operator', lineCounter])
         elif symbol in multiply_operators:
-            dictionary.append([symbol,'multiply_operator',lineCounter])
+            dictionary.append([symbol, 'multiply_operator', lineCounter])
         elif symbol in relational_operators:
-            dictionary.append([symbol,'relational_operator',lineCounter])
+            dictionary.append([symbol, 'relational_operator', lineCounter])
 
 
 

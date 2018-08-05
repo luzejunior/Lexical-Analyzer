@@ -1,4 +1,7 @@
-1212program teste; {programa exemplo}
+1212program teste; {programa exemplo
+fefesfsefsefsf}
+
+{{}
 var
 N1,N2,N3
   valor1: integer;
