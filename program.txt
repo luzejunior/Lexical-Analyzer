@@ -1,8 +1,10 @@
-program teste; {programa exemplo}
+1212program teste; {programa exemplo}
 var
+N1,N2,N3
   valor1: integer;
-  valor2: real;
+  valor2: real; ><= ***///
+  88ff88ff
 begin
   valor1 := 10;
-  valor2 := 10.8;
-end.
+  valor2 := 10.8.4.5;
+  .23.4
