@@ -3,6 +3,8 @@ var
 N1,N2,N3
   valor1: integer;
   valor2: real; ><= ***///
+  ()
+
   88ff88ff
 begin
   valor1 := 10;
