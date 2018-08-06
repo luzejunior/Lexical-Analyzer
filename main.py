@@ -5,6 +5,7 @@ dict2 = []
 lineCounter = 1
 delimiters = set(';,:()')
 sum_operators = set('+-')
+assignment_operator = [':=']
 multiply_operators = set('*/')
 relational_operators = ['<','>','<=','>=','=','<>']
 
@@ -20,11 +21,7 @@ def readArchive(path):
     global lineCounter
     with open(path, "r") as file:
         source_code = file.read()
-        source_code = re.sub(r'\n','\\c',source_code)
-        source_code = re.sub(r'{.*}','',source_code)
-        source_code = re.sub(r'\\c',r'\n',source_code)
-        lines = source_code.splitlines()
-
+        lines = process_comments(source_code)
         for line in lines:
             readLine(line)
             lineCounter = lineCounter + 1
@@ -34,11 +31,19 @@ def pre_process(line):
     new_line = re.sub(r'{.*}', "", line) # Remove Commentaries '{}'
     return re.sub('\n', '', new_line)
 
+def process_comments(source_code):
+    source_code = re.sub(r'\n', '\\c', source_code)
+    source_code = re.sub(r'{.*}', '', source_code)
+    source_code = re.sub(r'\\c', r'\n', source_code)
+    return source_code.splitlines()
+
+
 
 def readLine(line):
     global dict2
     pre_processed = pre_process(line)
-    symbols = re.findall(r':=|<>|<=|>=|[=;,><+\-*/()]', line)
+    symbols = re.findall(r':=|<>|<=|>=|[=;,><+\-*/(){}]|[^\w\s]', line)
+    # print(unreconized_symbols)
     no_symbols = re.sub(r'(\w+)*[,;=:><+\-*/](\w+)*', r'\1 \2', pre_processed) # removing symbols except for dot '.'
     no_symbols_tokens = no_symbols.split() #spliting into tokens
 
@@ -99,6 +104,17 @@ def analyze_symbols(tokens):
             dictionary.append([symbol, 'multiply_operator', lineCounter])
         elif symbol in relational_operators:
             dictionary.append([symbol, 'relational_operator', lineCounter])
+        elif symbol in assignment_operator:
+            dictionary.append([symbol, 'assignment_operator', lineCounter])
+        elif symbol in ['{','}']:
+            print('Error: Curly brackets of comments open|closed without opening|closing the other. Symbol: \''
+                  + symbol + '\' , at line: ' + str(lineCounter))
+            exit(1)
+        else:
+            print('Error: Character not recognized by language. Symbol: \''
+                  + symbol + '\' , at line: ' + str(lineCounter))
+            exit(1)
+
 
 
 

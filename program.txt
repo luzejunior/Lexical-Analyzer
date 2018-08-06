@@ -1,7 +1,11 @@
 1212program teste; {programa exemplo
 fefesfsefsefsf}
 
-{{}
+
+
+}
+
+{{} %
 var
 N1,N2,N3
   valor1: integer;
@@ -13,3 +17,4 @@ begin
   valor1 := 10;
   valor2 := 10.8.4.5;
   .23.4
+
