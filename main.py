@@ -42,7 +42,7 @@ def process_comments(source_code):
 def readLine(line):
     global dict2
     pre_processed = pre_process(line)
-    symbols = re.findall(r':=|<>|<=|>=|[=;,><+\-*/(){}]|[^\w\s]', line)
+    symbols = re.findall(r':=|<>|<=|>=|[=;,><+\-*/(){}]|[^\w\s\.]', line)
     # print(unreconized_symbols)
     no_symbols = re.sub(r'(\w+)*[,;=:><+\-*/](\w+)*', r'\1 \2', pre_processed) # removing symbols except for dot '.'
     no_symbols_tokens = no_symbols.split() #spliting into tokens
