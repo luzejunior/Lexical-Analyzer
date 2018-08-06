@@ -3,18 +3,17 @@ fefesfsefsefsf}
 
 
 
-}
 
-{{}
+
+
 var
 N1,N2,N3
   valor1: integer;
   valor2: real; ><= ***///
-  ()
+  () {
 
   88ff88ff
 begin
-  valor1 := 10;
+  }valor1 := 10;
  s valor2 := 10.8.4.5;
   .23.4
-

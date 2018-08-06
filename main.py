@@ -9,7 +9,7 @@ assignment_operator = [':=']
 multiply_operators = set('*/')
 relational_operators = ['<','>','<=','>=','=','<>']
 
-key_words = ['var', 'char', 'begin', 'end','program','integer','real','boolean','procedure','if','then'',else','while','not','do']
+key_words = ['var', 'char', 'begin', 'end','program','integer','real','boolean','procedure','if','then','else','while','not','do']
 
 
 def main():
@@ -21,9 +21,12 @@ def readArchive(path):
     global lineCounter
     with open(path, "r") as file:
         source_code = file.read()
-        lines = process_comments(source_code)
+        source_code_no_comments = process_comments2(source_code)
+        lines = source_code_no_comments.splitlines()
         for line in lines:
+            #new_line = process_comments(line)
             readLine(line)
+            #print (line)
             lineCounter = lineCounter + 1
 
 
@@ -31,12 +34,34 @@ def pre_process(line):
     new_line = re.sub(r'{.*}', "", line) # Remove Commentaries '{}'
     return re.sub('\n', '', new_line)
 
-def process_comments(source_code):
-    source_code = re.sub(r'\n', '\\c', source_code)
-    source_code = re.sub(r'{.*}', '', source_code)
-    source_code = re.sub(r'\\c', r'\n', source_code)
-    return source_code.splitlines()
+# def process_comments(line):
+#     #source_code = re.sub(r'\n', '\\c', source_code)
+#     return re.sub(r'{.*}|{.*$|^.+}', "", line)
+#     #source_code = re.sub(r'\\c', r'\n', source_code)
+#     #return source_code.splitlines()
 
+def process_comments2(source_code):
+    counter = 0
+    index_counter = 0
+    new_source_code = list(source_code)
+    for character in new_source_code:
+        #print (character + " " + str(counter) + " ")
+        if character == '{' and counter == 0:
+            #print ("{ found")
+            new_source_code[index_counter] = ""
+            counter = 1
+        elif character == '}' and counter == 1:
+            #print ("} Found")
+            new_source_code[index_counter] = ""
+            counter = 0
+        elif counter == 1 and character != '\n':
+            #print ("inside comment")
+            new_source_code[index_counter] = ""
+        index_counter += 1
+    if counter == 1:
+        print('Error: Curly brackets of comments open|closed without opening|closing the other. Symbol')
+        exit(1)
+    return ''.join(new_source_code)
 
 
 def readLine(line):
