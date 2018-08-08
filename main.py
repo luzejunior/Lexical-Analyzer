@@ -30,9 +30,9 @@ def readArchive(path):
             lineCounter = lineCounter + 1
 
 
-def pre_process(line):
-    new_line = re.sub(r'{.*}', "", line) # Remove Commentaries '{}'
-    return re.sub('\n', '', new_line)
+# def pre_process(line):
+#     new_line = re.sub(r'{.*}', "", line) # Remove Commentaries '{}'
+#     return re.sub('\n', '', new_line)
 
 # def process_comments(line):
 #     #source_code = re.sub(r'\n', '\\c', source_code)
@@ -66,18 +66,27 @@ def process_comments2(source_code):
 
 def readLine(line):
     global dict2
-    pre_processed = pre_process(line)
+    line = new_patterns(line) #for new patterns that might be added
     symbols = re.findall(r':=|<>|<=|>=|[=;,><+\-*/(){}]|[^\w\s\.]', line)
-    # print(unreconized_symbols)
-    no_symbols = re.sub(r'(\w+)*[,;=:><+\-*/](\w+)*', r'\1 \2', pre_processed) # removing symbols except for dot '.'
+    no_symbols = re.sub(r'(\w+)*[,;=:><+\-*/](\w+)*', r'\1 \2', line) # removing symbols except for dot '.'
     no_symbols_tokens = no_symbols.split() #spliting into tokens
 
     analyze(no_symbols_tokens)
     analyze_symbols(symbols)
 
 
+def new_patterns(line):
+    new_floats = re.findall(r'\+\d+\e\-\d+', line)
+    for new_float in new_floats:
+        dictionary.append([new_float, 'new_float', lineCounter])
+    return re.sub(r'\+\d+\e\-\d+', '', line)
+
+
 def analyze(tokens):
     for word in tokens:
+        # match = re.match(r'\+\d+\e\-\d+', word)
+        # if match:
+        #     dictionary.append([match.group(),'new_real',lineCounter])
         # Analyzing if it is a float number
         match = re.match(r'\d+\.\d*', word)
         if match:
@@ -111,7 +120,6 @@ def analyze(tokens):
         #Analyzing if it is either a keyword or identifier
         match = re.match(r'[a-zA-Z]\w*', word)
         if match:
-            re.match(r'[a-zA-Z]\w*', word)
             if word in key_words:
                 dictionary.append([word, 'keyword', lineCounter])
             else:

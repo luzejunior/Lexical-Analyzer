@@ -1,10 +1,10 @@
-1212program teste; {programa exemplo
+1212program teste; á  {programa exemplo
 fefesfsefsefsf}
 
 
-
-
-
++23e-12
+{
+aa22.22.22.22.22
 
 var
 N1,N2,N3
@@ -14,6 +14,6 @@ N1,N2,N3
 
   88ff88ff
 begin
-  }valor1 := 10;
+  valor1 := 10;
  s valor2 := 10.8.4.5;
-  .23.4
+  .23.4}
