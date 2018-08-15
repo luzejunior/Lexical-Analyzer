@@ -1,19 +1,19 @@
-1212program teste; á  {programa exemplo
+1212program teste;   {programa exemplo
 fefesfsefsefsf}
 
+oi;oi
 
-+23e-12
-{
-aa22.22.22.22.22
+oi tudo,bem
+oi:=xau
+//12.34.56
+aa22.22.22.22.22asyag
+a>b
+a>>>b
+a<=
 
-var
-N1,N2,N3
-  valor1: integer;
-  valor2: real; ><= ***///
-  () {
+30.4x5.3y3.1
 
-  88ff88ff
-begin
-  valor1 := 10;
- s valor2 := 10.8.4.5;
-  .23.4}
+//100.4x5.2y4.1z
+30.4x
+
+12.34.56
