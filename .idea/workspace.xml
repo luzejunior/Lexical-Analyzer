@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4f9c6e8b-faee-4e3c-9861-43e86e9a0f7b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/program.txt" beforeDir="false" afterPath="$PROJECT_DIR$/program.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/compiler.py" beforeDir="false" afterPath="$PROJECT_DIR$/compiler.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -14,7 +13,7 @@
   </component>
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/Lexical_Analyzer$main.coverage" NAME="main Coverage Results" MODIFIED="1534356041950" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Lexical_Analyzer$compiler.coverage" NAME="compiler Coverage Results" MODIFIED="1535660179074" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Lexical_Analyzer$compiler.coverage" NAME="compiler Coverage Results" MODIFIED="1535662708588" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="FUSProjectUsageTrigger">
     <session id="-453237202">
@@ -31,107 +30,82 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="py" value="6" />
+          <entry key="py" value="10" />
           <entry key="txt" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="PLAIN_TEXT" value="1" />
-          <entry key="Python" value="6" />
+          <entry key="Python" value="10" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="py" value="7455" />
+          <entry key="dummy" value="1" />
+          <entry key="py" value="8162" />
           <entry key="txt" value="491" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="PLAIN_TEXT" value="491" />
-          <entry key="Python" value="7454" />
+          <entry key="PLAIN_TEXT" value="492" />
+          <entry key="Python" value="8161" />
           <entry key="RegExp" value="1" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.5">
-      <split-first>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/lexical_analyzer/lexical.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="270">
-                  <caret line="18" column="29" lean-forward="true" selection-start-line="18" selection-start-column="29" selection-end-line="18" selection-end-column="29" />
-                  <folding>
-                    <marker date="1535660171400" expanded="true" signature="26:31" ph="..." />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/main.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="899">
-                  <caret line="144" lean-forward="true" selection-start-line="144" selection-end-line="144" />
-                  <folding>
-                    <marker date="1535658717856" expanded="true" signature="813:814" ph="..." />
-                    <marker date="1535658717856" expanded="true" signature="2685:2688" ph="..." />
-                    <marker date="1535658717856" expanded="true" signature="2711:3106" ph="..." />
-                    <marker date="1535658717856" expanded="true" signature="2969:3106" ph="..." />
-                    <marker date="1535658717856" expanded="true" signature="3130:3135" ph="..." />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/program.txt">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="180">
-                  <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/main.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="2534">
-                  <caret line="171" selection-start-line="171" selection-end-line="173" />
-                  <folding>
-                    <marker date="1535658717856" expanded="true" signature="813:814" ph="..." />
-                    <marker date="1535658717856" expanded="true" signature="2685:2688" ph="..." />
-                    <marker date="1535658717856" expanded="true" signature="2711:3106" ph="..." />
-                    <marker date="1535658717856" expanded="true" signature="2969:3106" ph="..." />
-                    <marker date="1535658717856" expanded="true" signature="3130:3135" ph="..." />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/compiler.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="90">
-                  <caret line="6" column="12" selection-start-line="6" selection-start-column="12" selection-end-line="6" selection-end-column="12" />
-                  <folding>
-                    <marker date="1535660171404" expanded="true" signature="58:163" ph="..." />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-second>
-    </splitter>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/lexical_analyzer/lexical.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="272">
+              <caret line="95" column="17" lean-forward="true" selection-start-line="95" selection-start-column="17" selection-end-line="95" selection-end-column="17" />
+              <folding>
+                <marker date="1535660550599" expanded="true" signature="26:31" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/compiler.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="210">
+              <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
+              <folding>
+                <element signature="e#0#44#0" expanded="true" />
+                <marker date="1535662582296" expanded="true" signature="109:239" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/syntactic_analyzer/syntactic.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="45">
+              <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+              <folding>
+                <marker date="1535662730212" expanded="true" signature="46:51" ph="..." />
+                <marker date="1535662730212" expanded="true" signature="46:667" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/program.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -145,11 +119,15 @@
       <find>(</find>
       <find>oi</find>
       <find>print</find>
-      <find>dict2</find>
       <find>delimiters</find>
       <find>sum_operators</find>
       <find>assignment_operator</find>
+      <find>dict2</find>
+      <find>key_words</find>
     </findStrings>
+    <replaceStrings>
+      <replace>_keywords</replace>
+    </replaceStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -161,8 +139,10 @@
         <option value="$PROJECT_DIR$/Lexical Analyzer/lexical.py" />
         <option value="$PROJECT_DIR$/__init__.py" />
         <option value="$PROJECT_DIR$/program.txt" />
-        <option value="$PROJECT_DIR$/compiler.py" />
         <option value="$PROJECT_DIR$/lexical_analyzer/lexical.py" />
+        <option value="$PROJECT_DIR$/syntactic_analyzer/syntatic.py" />
+        <option value="$PROJECT_DIR$/compiler.py" />
+        <option value="$PROJECT_DIR$/syntactic_analyzer/syntactic.py" />
       </list>
     </option>
   </component>
@@ -194,6 +174,11 @@
               <item name="Lexical-Analyzer" type="b2602c69:ProjectViewProjectNode" />
               <item name="Lexical-Analyzer" type="462c0819:PsiDirectoryNode" />
               <item name="lexical_analyzer" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Lexical-Analyzer" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Lexical-Analyzer" type="462c0819:PsiDirectoryNode" />
+              <item name="syntactic_analyzer" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -291,12 +276,12 @@
     <frame x="64" y="-11" width="2497" height="1092" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13352388" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.13352388" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.22175732" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.22175732" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39853558" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -344,20 +329,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="899">
-          <caret line="144" lean-forward="true" selection-start-line="144" selection-end-line="144" />
-          <folding>
-            <marker date="1535658717856" expanded="true" signature="813:814" ph="..." />
-            <marker date="1535658717856" expanded="true" signature="2685:2688" ph="..." />
-            <marker date="1535658717856" expanded="true" signature="2711:3106" ph="..." />
-            <marker date="1535658717856" expanded="true" signature="2969:3106" ph="..." />
-            <marker date="1535658717856" expanded="true" signature="3130:3135" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/__init__.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -368,22 +339,41 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="899">
+          <caret line="144" lean-forward="true" selection-start-line="144" selection-end-line="144" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/compiler.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="12" selection-start-line="6" selection-start-column="12" selection-end-line="6" selection-end-column="12" />
+        <state relative-caret-position="210">
+          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
           <folding>
-            <marker date="1535660171404" expanded="true" signature="58:163" ph="..." />
+            <element signature="e#0#44#0" expanded="true" />
+            <marker date="1535662582296" expanded="true" signature="109:239" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/syntactic_analyzer/syntactic.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+          <folding>
+            <marker date="1535662730212" expanded="true" signature="46:51" ph="..." />
+            <marker date="1535662730212" expanded="true" signature="46:667" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/lexical_analyzer/lexical.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="29" lean-forward="true" selection-start-line="18" selection-start-column="29" selection-end-line="18" selection-end-column="29" />
+        <state relative-caret-position="272">
+          <caret line="95" column="17" lean-forward="true" selection-start-line="95" selection-start-column="17" selection-end-line="95" selection-end-column="17" />
           <folding>
-            <marker date="1535660171400" expanded="true" signature="26:31" ph="..." />
+            <marker date="1535660550599" expanded="true" signature="26:31" ph="..." />
           </folding>
         </state>
       </provider>
