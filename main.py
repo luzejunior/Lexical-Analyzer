@@ -10,7 +10,7 @@ assignment_operator = [':=']
 multiply_operators = set('*/')
 relational_operators = ['<','>','<=','>=','=','<>']
 
-key_words = ['var', 'char', 'begin', 'end','program','integer','real','boolean','procedure','if','then','else','while','not','do']
+key_words = ['var', 'char', 'begin', 'end','program','integer','real','boolean','procedure','if','then','else','while', 'not','do']
 
 
 def main():
@@ -29,10 +29,6 @@ def readArchive(path):
             #new_line = process_comments(line)
             readLine(line)
             lineCounter = lineCounter + 1
-
-
-def cleanComment(line):
-    return re.sub(r'//.*', '', line)
 
 
 def process_comments(source_code):
@@ -74,6 +70,7 @@ def readLine(line):
 def analyzer(line=""):
     global tokens_list
     tokens_list = re.sub(r'(\w*)(:=|<>|<=|>=|[=;,><+\-*/(){}]|[^\w\s\.])(\w*)', r'\1 \2 \3', line).split() #inserting space between simbols to split correctly
+    # print(tokens_list)
     for token in tokens_list:
         analyze_token(token)
 
@@ -101,9 +98,11 @@ def reappend(word="", match=""):
 
 
 def analyze_words(word):
-    # match = re.match(r'\+\d+\e\-\d+', word)
-    # if match:
-    #     dictionary.append([match.group(),'new_real',lineCounter])
+    match = re.match(r'\d+\.\d*x\d+\.\d*y\d+\.\d*z',word)
+    if match:
+        dictionary.append([match.group(),'float_3d',lineCounter])
+        reappend(word, match.group())
+        return True
     # Analyzing if it is a float number
     match = re.match(r'\d+\.\d*', word)
     if match:
@@ -143,6 +142,7 @@ def analyze_words(word):
 
     return False
 
+
 def analyze_symbols(symbol):
     found = True
     if symbol in delimiters:
@@ -166,7 +166,7 @@ def analyze_symbols(symbol):
 def printDictionary():
     for line in dictionary:
         print (line)
-    # print dictionary
+
 
 
 if __name__ == "__main__":
