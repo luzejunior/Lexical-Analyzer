@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4f9c6e8b-faee-4e3c-9861-43e86e9a0f7b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/syntactic_analyzer/syntactic.py" beforeDir="false" afterPath="$PROJECT_DIR$/syntactic_analyzer/syntactic.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -44,14 +43,14 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="1" />
-          <entry key="py" value="9711" />
+          <entry key="py" value="11537" />
           <entry key="txt" value="491" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="PLAIN_TEXT" value="492" />
-          <entry key="Python" value="9710" />
+          <entry key="Python" value="11536" />
           <entry key="RegExp" value="1" />
         </counts>
       </usages-collector>
@@ -62,7 +61,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lexical_analyzer/lexical.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
+            <state relative-caret-position="330">
               <caret line="25" column="35" selection-start-line="25" selection-start-column="35" selection-end-line="25" selection-end-column="35" />
               <folding>
                 <marker date="1535660550599" expanded="true" signature="26:31" ph="..." />
@@ -74,7 +73,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/compiler.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
+            <state relative-caret-position="210">
               <caret line="14" selection-start-line="14" selection-end-line="14" />
               <folding>
                 <element signature="e#0#44#0" expanded="true" />
@@ -87,14 +86,17 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/syntactic_analyzer/syntactic.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="739">
-              <caret line="80" column="8" selection-start-line="80" selection-start-column="8" selection-end-line="80" selection-end-column="8" />
+            <state relative-caret-position="786">
+              <caret line="150" column="16" selection-start-line="150" selection-start-column="16" selection-end-line="150" selection-end-column="16" />
               <folding>
-                <marker date="1535739157283" expanded="true" signature="88:93" ph="..." />
-                <marker date="1535739157283" expanded="true" signature="259:551" ph="..." />
-                <marker date="1535739157283" expanded="true" signature="782:815" ph="..." />
-                <marker date="1535739157283" expanded="true" signature="2693:2717" ph="..." />
-                <marker date="1535739157283" expanded="true" signature="2753:2760" ph="..." />
+                <marker date="1535745331070" expanded="true" signature="88:93" ph="..." />
+                <marker date="1535745331070" expanded="true" signature="259:551" ph="..." />
+                <marker date="1535745331070" expanded="true" signature="868:901" ph="..." />
+                <marker date="1535745331070" expanded="true" signature="2755:3253" ph="..." />
+                <marker date="1535745331070" expanded="true" signature="3293:3563" ph="..." />
+                <marker date="1535745331070" expanded="true" signature="3602:4139" ph="..." />
+                <marker date="1535745331070" expanded="true" signature="4427:4751" ph="..." />
+                <marker date="1535745331070" expanded="true" signature="5057:5063" ph="..." />
               </folding>
             </state>
           </provider>
@@ -156,11 +158,11 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="64" />
-    <option name="y" value="-11" />
-    <option name="width" value="1303" />
-    <option name="height" value="780" />
+  <component name="ProjectFrameBounds" extendedState="4">
+    <option name="x" value="65" />
+    <option name="y" value="24" />
+    <option name="width" value="1248" />
+    <option name="height" value="1056" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -277,10 +279,10 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="64" y="-11" width="2497" height="1092" extended-state="6" />
+    <frame x="65" y="24" width="1248" height="1056" extended-state="4" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.13638219" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2778702" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -337,19 +339,16 @@
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/main.py" />
-    <entry file="file://$PROJECT_DIR$/lexical_analyzer/lexical.py">
+    <entry file="file://$PROJECT_DIR$/program.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="25" column="35" selection-start-line="25" selection-start-column="35" selection-end-line="25" selection-end-column="35" />
-          <folding>
-            <marker date="1535660550599" expanded="true" signature="26:31" ph="..." />
-          </folding>
+        <state relative-caret-position="180">
+          <caret line="12" selection-start-line="12" selection-end-line="12" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/compiler.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
+        <state relative-caret-position="210">
           <caret line="14" selection-start-line="14" selection-end-line="14" />
           <folding>
             <element signature="e#0#44#0" expanded="true" />
@@ -358,23 +357,29 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/program.txt">
+    <entry file="file://$PROJECT_DIR$/lexical_analyzer/lexical.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" selection-start-line="12" selection-end-line="12" />
+        <state relative-caret-position="330">
+          <caret line="25" column="35" selection-start-line="25" selection-start-column="35" selection-end-line="25" selection-end-column="35" />
+          <folding>
+            <marker date="1535660550599" expanded="true" signature="26:31" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/syntactic_analyzer/syntactic.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="739">
-          <caret line="80" column="8" selection-start-line="80" selection-start-column="8" selection-end-line="80" selection-end-column="8" />
+        <state relative-caret-position="786">
+          <caret line="150" column="16" selection-start-line="150" selection-start-column="16" selection-end-line="150" selection-end-column="16" />
           <folding>
-            <marker date="1535739157283" expanded="true" signature="88:93" ph="..." />
-            <marker date="1535739157283" expanded="true" signature="259:551" ph="..." />
-            <marker date="1535739157283" expanded="true" signature="782:815" ph="..." />
-            <marker date="1535739157283" expanded="true" signature="2693:2717" ph="..." />
-            <marker date="1535739157283" expanded="true" signature="2753:2760" ph="..." />
+            <marker date="1535745331070" expanded="true" signature="88:93" ph="..." />
+            <marker date="1535745331070" expanded="true" signature="259:551" ph="..." />
+            <marker date="1535745331070" expanded="true" signature="868:901" ph="..." />
+            <marker date="1535745331070" expanded="true" signature="2755:3253" ph="..." />
+            <marker date="1535745331070" expanded="true" signature="3293:3563" ph="..." />
+            <marker date="1535745331070" expanded="true" signature="3602:4139" ph="..." />
+            <marker date="1535745331070" expanded="true" signature="4427:4751" ph="..." />
+            <marker date="1535745331070" expanded="true" signature="5057:5063" ph="..." />
           </folding>
         </state>
       </provider>

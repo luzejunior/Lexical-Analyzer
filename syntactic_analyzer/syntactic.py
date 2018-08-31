@@ -17,10 +17,14 @@ class Syntactic:
         print('Exiting program...')
         exit(0)
 
-    def _get_next_token(self):
+    def _get_next_token(self,pop=True):
         if len(self.lexical_input) == 0:
             return False
-        return self.lexical_input.pop()
+        if pop:
+            return self.lexical_input.pop()
+        else:
+            return self.lexical_input[-1]
+
 
     def _get_word(self, token=[]):
         return token[WORD]
@@ -48,8 +52,9 @@ class Syntactic:
                 token = self._get_next_token()
                 if token and self._get_word(token) == ';':
                     # checking now for possible declarations
-                    token = self._get_next_token()
+                    token = self._get_next_token(pop=False)
                     if token and self._get_word(token) == 'var':
+                        self._get_next_token()
                         self._variables_declaration_routine()
 
                     # todo subprograms declaration routine
@@ -64,8 +69,22 @@ class Syntactic:
 
 
     def _variables_declaration_routine(self):
+
+        self._identifiers_list_routine()
         token = self._get_next_token()
-        if token and self._get_classification(token) == 'identifier':
+        if token and self._get_word(token) == ':':
+            self._type_routine()
+            token = self._get_next_token()
+            if token and self._get_word(token) == ';':
+                self._variable_declaration_subroutine()
+            else:
+                self._show_error(MISSING_ARG,token)
+        else:
+            self._show_error(MISSING_ARG,token)
+
+    def _variable_declaration_subroutine(self):
+        #it might be empty
+        if self._identifiers_list_routine():
             token = self._get_next_token()
             if token and self._get_word(token) == ':':
                 self._type_routine()
@@ -77,14 +96,64 @@ class Syntactic:
             else:
                 self._show_error(MISSING_ARG,token)
 
-    def _variable_declaration_subroutine(self):
-        
 
-        
+
     def _identifiers_list_routine(self):
+        token = self._get_next_token(pop=False)
+        if token and self._get_classification(token) == 'identifier':
+            self._get_next_token()
+            self._identifiers_list_subroutine()
+            return True
+        else:
+            return False
+
+    def _identifiers_list_subroutine(self):
+        token = self._get_next_token(pop=False) #not popping token cause routine accepts empty
+        if token and self._get_word() == ',':
+            self._get_next_token() #it means the current token can be popped from list
+            token = self._get_next_token()
+            if token and self._get_classification(token) == 'identifier':
+                self._identifiers_list_subroutine()
+            else:
+                self._show_error(MISSING_ARG,token)
+            return True
+        else:
+            return False
 
 
-    def _type_routine
+    def _type_routine(self):
+        token = self._get_next_token()
+        if token:
+            word = self._get_word(token)
+            if word != 'boolean' and word != 'real' and word != 'integer':
+                self._show_error(MISSING_ARG,token)
+
+
+    def _sub_programs_routine(self):
+        if self._sub_program_routine():
+            token = self._get_next_token()
+            if token and self._get_word(token) == ';':
+                self._sub_programs_routine()
+            else:
+                self._show_error(MISSING_ARG,token)
+            return True
+        else:
+            return False
+
+
+
+    def _sub_program_routine(self):
+        token = self._get_next_token(pop=False)
+        if token and self._get_word(token) == 'procedure':
+            self._get_next_token()
+            token = self._get_next_token()
+            if token and self._get_classification() == 'identifier':
+                
+
+
+
+
+
 
 
 
