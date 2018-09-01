@@ -1,19 +1,5 @@
-1212program teste;   {programa exemplo
+program oi;   {programa exemplo
 fefesfsefsefsf}
 
-oi;oi
-
-oi tudo,bem
-oi:=xau
-//12.34.56
-aa22.22.22.22.22asyag
-a>b
-a>>>b
-a<=
-
-30.4x5.3y3.1z
-
-//100.4x5.2y4.1z
-30.4x
-
-12.34.56
+var oi: integer;
+    xau: boolan;

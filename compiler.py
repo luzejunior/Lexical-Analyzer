@@ -6,8 +6,7 @@ def main():
     lexical = Lexical('program.txt')
     lexical.analyze()
     syntactic = Syntactic(lexical.get_list())
-    syntactic.test()
-
+    syntactic.start()
 
 
 if __name__ == "__main__":
