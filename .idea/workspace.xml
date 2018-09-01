@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4f9c6e8b-faee-4e3c-9861-43e86e9a0f7b" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lexical_analyzer/lexical.py" beforeDir="false" afterPath="$PROJECT_DIR$/lexical_analyzer/lexical.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/program.txt" beforeDir="false" afterPath="$PROJECT_DIR$/program.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/syntactic_analyzer/syntactic.py" beforeDir="false" afterPath="$PROJECT_DIR$/syntactic_analyzer/syntactic.py" afterDir="false" />
     </list>
@@ -13,7 +15,7 @@
   </component>
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/Lexical_Analyzer$main.coverage" NAME="main Coverage Results" MODIFIED="1534356041950" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Lexical_Analyzer$compiler.coverage" NAME="compiler Coverage Results" MODIFIED="1535768549457" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Lexical_Analyzer$compiler.coverage" NAME="compiler Coverage Results" MODIFIED="1535815699415" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="FUSProjectUsageTrigger">
     <session id="-453237202">
@@ -44,14 +46,14 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="1" />
-          <entry key="py" value="18229" />
-          <entry key="txt" value="648" />
+          <entry key="py" value="19489" />
+          <entry key="txt" value="833" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="PLAIN_TEXT" value="649" />
-          <entry key="Python" value="18228" />
+          <entry key="PLAIN_TEXT" value="834" />
+          <entry key="Python" value="19488" />
           <entry key="RegExp" value="1" />
         </counts>
       </usages-collector>
@@ -62,10 +64,10 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lexical_analyzer/lexical.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="14" column="137" selection-start-line="14" selection-start-column="134" selection-end-line="14" selection-end-column="137" />
+            <state relative-caret-position="1965">
+              <caret line="131" column="46" selection-start-line="131" selection-start-column="46" selection-end-line="131" selection-end-column="65" />
               <folding>
-                <marker date="1535660550599" expanded="true" signature="26:31" ph="..." />
+                <marker date="1535814861363" expanded="true" signature="26:31" ph="..." />
               </folding>
             </state>
           </provider>
@@ -87,28 +89,29 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/syntactic_analyzer/syntactic.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="12" column="20" selection-start-line="12" selection-start-column="20" selection-end-line="12" selection-end-column="20" />
+            <state relative-caret-position="315">
+              <caret line="87" column="38" lean-forward="true" selection-start-line="87" selection-start-column="38" selection-end-line="87" selection-end-column="38" />
               <folding>
-                <marker date="1535807483276" expanded="true" signature="55:60" ph="..." />
-                <marker date="1535807483276" expanded="true" signature="580:831" ph="..." />
-                <marker date="1535807483276" expanded="true" signature="1439:1692" ph="..." />
-                <marker date="1535807483276" expanded="true" signature="1539:1692" ph="..." />
-                <marker date="1535807483276" expanded="true" signature="1827:1865" ph="..." />
-                <marker date="1535807483276" expanded="true" signature="3807:4460" ph="..." />
-                <marker date="1535807483276" expanded="true" signature="4521:5027" ph="..." />
-                <marker date="1535807483276" expanded="true" signature="5066:5621" ph="..." />
-                <marker date="1535807483276" expanded="true" signature="6079:6414" ph="..." />
-                <marker date="1535807483276" expanded="true" signature="8582:8588" ph="..." />
-                <marker date="1535807483276" expanded="true" signature="8644:8978" ph="..." />
-                <marker date="1535807483276" expanded="true" signature="10111:10272" ph="..." />
-                <marker date="1535807483276" expanded="true" signature="10417:10647" ph="..." />
-                <marker date="1535807483276" expanded="true" signature="11488:11494" ph="..." />
-                <marker date="1535807483276" expanded="true" signature="11529:11613" ph="..." />
-                <marker date="1535807483276" expanded="true" signature="11917:12193" ph="..." />
-                <marker date="1535807483276" expanded="true" signature="12619:12867" ph="..." />
-                <marker date="1535807483276" expanded="true" signature="12992:13239" ph="..." />
-                <marker date="1535807483276" expanded="true" signature="14696:14702" ph="..." />
+                <marker date="1535815699409" expanded="true" signature="55:60" ph="..." />
+                <marker date="1535815699409" expanded="true" signature="577:828" ph="..." />
+                <marker date="1535815699409" expanded="true" signature="1491:1744" ph="..." />
+                <marker date="1535815699409" expanded="true" signature="1591:1744" ph="..." />
+                <marker date="1535815699409" expanded="true" signature="1879:1995" ph="..." />
+                <marker date="1535815699409" expanded="true" signature="4149:4802" ph="..." />
+                <marker date="1535815699409" expanded="true" signature="4862:5340" ph="..." />
+                <marker date="1535815699409" expanded="true" signature="5379:5388" ph="..." />
+                <marker date="1535815699409" expanded="true" signature="5379:5935" ph="..." />
+                <marker date="1535815699409" expanded="true" signature="6393:6728" ph="..." />
+                <marker date="1535815699409" expanded="true" signature="8849:8855" ph="..." />
+                <marker date="1535815699409" expanded="true" signature="8911:9246" ph="..." />
+                <marker date="1535815699409" expanded="true" signature="10557:10719" ph="..." />
+                <marker date="1535815699409" expanded="true" signature="10891:11121" ph="..." />
+                <marker date="1535815699409" expanded="true" signature="12668:13310" ph="..." />
+                <marker date="1535815699409" expanded="true" signature="13345:13429" ph="..." />
+                <marker date="1535815699409" expanded="true" signature="13733:13999" ph="..." />
+                <marker date="1535815699409" expanded="true" signature="14425:14673" ph="..." />
+                <marker date="1535815699409" expanded="true" signature="14798:15045" ph="..." />
+                <marker date="1535815699409" expanded="true" signature="16502:16508" ph="..." />
               </folding>
             </state>
           </provider>
@@ -117,8 +120,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/program.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+            <state relative-caret-position="75">
+              <caret line="5" column="33" selection-start-line="5" selection-start-column="33" selection-end-line="5" selection-end-column="33" />
             </state>
           </provider>
         </entry>
@@ -157,9 +160,9 @@
         <option value="$PROJECT_DIR$/main.py" />
         <option value="$PROJECT_DIR$/Lexical Analyzer/lexical.py" />
         <option value="$PROJECT_DIR$/__init__.py" />
-        <option value="$PROJECT_DIR$/lexical_analyzer/lexical.py" />
         <option value="$PROJECT_DIR$/syntactic_analyzer/syntatic.py" />
         <option value="$PROJECT_DIR$/compiler.py" />
+        <option value="$PROJECT_DIR$/lexical_analyzer/lexical.py" />
         <option value="$PROJECT_DIR$/program.txt" />
         <option value="$PROJECT_DIR$/syntactic_analyzer/syntactic.py" />
       </list>
@@ -354,8 +357,18 @@
     <entry file="file://$PROJECT_DIR$/main.py" />
     <entry file="file://$PROJECT_DIR$/program.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+        <state relative-caret-position="75">
+          <caret line="5" column="33" selection-start-line="5" selection-start-column="33" selection-end-line="5" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lexical_analyzer/lexical.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1965">
+          <caret line="131" column="46" selection-start-line="131" selection-start-column="46" selection-end-line="131" selection-end-column="65" />
+          <folding>
+            <marker date="1535814861363" expanded="true" signature="26:31" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -370,40 +383,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lexical_analyzer/lexical.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="137" selection-start-line="14" selection-start-column="134" selection-end-line="14" selection-end-column="137" />
-          <folding>
-            <marker date="1535660550599" expanded="true" signature="26:31" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/syntactic_analyzer/syntactic.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="12" column="20" selection-start-line="12" selection-start-column="20" selection-end-line="12" selection-end-column="20" />
+        <state relative-caret-position="315">
+          <caret line="87" column="38" lean-forward="true" selection-start-line="87" selection-start-column="38" selection-end-line="87" selection-end-column="38" />
           <folding>
-            <marker date="1535807483276" expanded="true" signature="55:60" ph="..." />
-            <marker date="1535807483276" expanded="true" signature="580:831" ph="..." />
-            <marker date="1535807483276" expanded="true" signature="1439:1692" ph="..." />
-            <marker date="1535807483276" expanded="true" signature="1539:1692" ph="..." />
-            <marker date="1535807483276" expanded="true" signature="1827:1865" ph="..." />
-            <marker date="1535807483276" expanded="true" signature="3807:4460" ph="..." />
-            <marker date="1535807483276" expanded="true" signature="4521:5027" ph="..." />
-            <marker date="1535807483276" expanded="true" signature="5066:5621" ph="..." />
-            <marker date="1535807483276" expanded="true" signature="6079:6414" ph="..." />
-            <marker date="1535807483276" expanded="true" signature="8582:8588" ph="..." />
-            <marker date="1535807483276" expanded="true" signature="8644:8978" ph="..." />
-            <marker date="1535807483276" expanded="true" signature="10111:10272" ph="..." />
-            <marker date="1535807483276" expanded="true" signature="10417:10647" ph="..." />
-            <marker date="1535807483276" expanded="true" signature="11488:11494" ph="..." />
-            <marker date="1535807483276" expanded="true" signature="11529:11613" ph="..." />
-            <marker date="1535807483276" expanded="true" signature="11917:12193" ph="..." />
-            <marker date="1535807483276" expanded="true" signature="12619:12867" ph="..." />
-            <marker date="1535807483276" expanded="true" signature="12992:13239" ph="..." />
-            <marker date="1535807483276" expanded="true" signature="14696:14702" ph="..." />
+            <marker date="1535815699409" expanded="true" signature="55:60" ph="..." />
+            <marker date="1535815699409" expanded="true" signature="577:828" ph="..." />
+            <marker date="1535815699409" expanded="true" signature="1491:1744" ph="..." />
+            <marker date="1535815699409" expanded="true" signature="1591:1744" ph="..." />
+            <marker date="1535815699409" expanded="true" signature="1879:1995" ph="..." />
+            <marker date="1535815699409" expanded="true" signature="4149:4802" ph="..." />
+            <marker date="1535815699409" expanded="true" signature="4862:5340" ph="..." />
+            <marker date="1535815699409" expanded="true" signature="5379:5388" ph="..." />
+            <marker date="1535815699409" expanded="true" signature="5379:5935" ph="..." />
+            <marker date="1535815699409" expanded="true" signature="6393:6728" ph="..." />
+            <marker date="1535815699409" expanded="true" signature="8849:8855" ph="..." />
+            <marker date="1535815699409" expanded="true" signature="8911:9246" ph="..." />
+            <marker date="1535815699409" expanded="true" signature="10557:10719" ph="..." />
+            <marker date="1535815699409" expanded="true" signature="10891:11121" ph="..." />
+            <marker date="1535815699409" expanded="true" signature="12668:13310" ph="..." />
+            <marker date="1535815699409" expanded="true" signature="13345:13429" ph="..." />
+            <marker date="1535815699409" expanded="true" signature="13733:13999" ph="..." />
+            <marker date="1535815699409" expanded="true" signature="14425:14673" ph="..." />
+            <marker date="1535815699409" expanded="true" signature="14798:15045" ph="..." />
+            <marker date="1535815699409" expanded="true" signature="16502:16508" ph="..." />
           </folding>
         </state>
       </provider>

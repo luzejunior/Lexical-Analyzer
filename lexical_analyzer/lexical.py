@@ -131,7 +131,7 @@ class Lexical:
         elif symbol in self._relational_operators:
             self._dictionary.append([symbol, 'relational_operator', self._line_counter])
         elif symbol in self._assignment_operator:
-            self._dictionary.append([symbol, '_assignment_operator', self._line_counter])
+            self._dictionary.append([symbol, 'assignment_operator', self._line_counter])
         else:
             found = False
 

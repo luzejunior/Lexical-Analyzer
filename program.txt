@@ -3,6 +3,20 @@ fefesfsefsefsf}
 
 var oi: integer;
     xau: boolean;
-procedure oi;
-procedure xau
+procedure oi (oi:integer; td:real);
+    begin
+
+    end;
+
+    begin
+        xau := (220);
+        while 1 > 4 do
+           begin
+
+           end
+
+    end
+
+    .
+
 
