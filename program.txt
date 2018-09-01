@@ -2,4 +2,7 @@ program oi;   {programa exemplo
 fefesfsefsefsf}
 
 var oi: integer;
-    xau: boolan;
+    xau: boolean;
+procedure oi;
+procedure xau
+

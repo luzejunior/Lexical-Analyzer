@@ -1,20 +1,18 @@
 WORD = 0
 CLASSIFICATION = 1
 LINE = 2
-MISSING_ARG = -1
-MISSING_ID = -2
 
 
 class Syntactic:
-    def __init__(self, lexical_input=['token','classification',1]):
+    def __init__(self, lexical_input=['token', 'classification', 1]):
         self.lexical_input = lexical_input[::-1]
         self.success = False
-        self._last_read =[]
+        self._last_read = []
 
     def _show_error(self, token=[], error_msg=''):
-        if token == False:
+        if not token:
             error_msg = '[Syntax Error] Reached EOF.'\
-                        ' | LAST TOKEN: \''+ self._get_word(self._last_read)\
+                        ' | LAST TOKEN: \'' + self._get_word(self._last_read)\
                         + '\' | LINE: ' + str(self._get_line(self._last_read)) + ' | Description:  ' + error_msg
         else:
             error_msg = '[Syntax Error] CURRENT TOKEN: \'' + self._get_word(token) + '\' | LINE: '\
@@ -37,15 +35,17 @@ class Syntactic:
         else:
             return self.lexical_input[-1]
 
-
     def _get_word(self, token=[]):
         return token[WORD]
 
     def _get_line(self, token=[]):
         return token[LINE]
 
-    def _checker(self,token=[],type_=WORD, compare_to=''):
-        return token and token[type_] == compare_to
+    def _checker(self,token=[],type_=WORD, compare_to='',belong_to=[]):
+        if belong_to:
+            return token and token[type_] in belong_to
+        else:
+            return token and token[type_] == compare_to
 
     def _get_classification(self, token=[]):
         return token[CLASSIFICATION]
@@ -55,6 +55,7 @@ class Syntactic:
         self._program_routine()
 
     def _program_routine(self, capture_error=True):
+
         token = self._get_next_token()
         if self._checker(token, type_=WORD, compare_to='program'):
             token = self._get_next_token()
@@ -94,6 +95,7 @@ class Syntactic:
 
     def _variable_declaration_subroutine(self):
         #it might be empty
+
         if self._identifiers_list_routine(capture_error=False):
             token = self._get_next_token()
             if self._checker(token, type_=WORD, compare_to=':'):
@@ -107,6 +109,7 @@ class Syntactic:
                 self._show_error(token, error_msg='Missing expected \':\'. {Variable_SubDeclaration_Routine}')
 
     def _identifiers_list_routine(self, capture_error=True):
+
         token = self._get_next_token(pop=capture_error)
         if self._checker(token,type_=CLASSIFICATION, compare_to='identifier'):
             self._get_next_token(pop=not capture_error)
@@ -136,17 +139,16 @@ class Syntactic:
                 if not self._checker(token, type_=WORD, compare_to='boolean'):
                     self._show_error(token, error_msg='Missing expected type. {Type_Routine}')
 
-
-
     def _sub_programs_routine(self, capture_error=True):
         if self._sub_program_routine(capture_error=False):
             token = self._get_next_token()
             if self._checker(token, type_=WORD, compare_to=';'):
                 self._sub_programs_routine()
             else:
-                self._show_error(token, error_msg='Missing expected \';\'.')
+                self._show_error(token, error_msg='Missing expected \';\'. {SubPrograms_Routine}')
 
     def _sub_program_routine(self, capture_error=True):
+
         token = self._get_next_token(pop=capture_error)
         if self._checker(token, type_=WORD, compare_to='procedure'):
             self._get_next_token(pop=not capture_error)
@@ -156,70 +158,182 @@ class Syntactic:
                 token = self._get_next_token()
                 if self._checker(token, type_=WORD, compare_to=';'):
                     token = self._get_next_token(pop=False)
-                    if self._checker(token,type_=WORD, compare_to='var'):
+                    if self._checker(token, type_=WORD, compare_to='var'):
                         self._get_next_token()
                         self._variables_declaration_routine()
+                    else:
+                        if not token:
+                            self._show_error(token,'Missing possible expected \'var\'.')
                     self._sub_programs_routine()
                     # self._compound_command_routine()
 
                 else:
-                    self._show_error(token, error_msg='Missing expected \';\'.')
+                    self._show_error(token, error_msg='Missing expected \';\'. {SubProgram_Routine}')
             else:
-                self._show_error(token, error_msg='Missing expected \';\'.')
+                self._show_error(token, error_msg='Missing expected identifier. {SubProgram_Routine}')
             return True
         else:
             if capture_error:
-                self._show_error(token, error_msg='Missing expected \';\'.')
+                self._show_error(token, error_msg='Missing expected \';\'. {SubProgram_Routine}')
             else:
                 return False
 
-
-
-
-
-
     def _arguments_routines(self, capture_error=True):
+
         token = self._get_next_token(pop=capture_error)
         if self._checker(token, type_=WORD, compare_to='('):
             self._get_next_token(pop= not capture_error)
             self._parameters_list_routine()
             token = self._get_next_token()
             if self._checker(token,type_=WORD, compare_to=')'):
-                self._show_error(token, 'Missing expected \')\'.')
+                self._show_error(token, 'Missing expected \')\'. {Arguments_Routine}')
             return True
         else:
             if capture_error:
-                self._show_error(token,'Missing expected \'(\'.')
+                self._show_error(token,'Missing expected \'(\'. {Arguments_Routine}')
             else:
                 return False
 
-
     def _parameters_list_routine(self, capture_error=True):
+
         self._identifiers_list_routine()
         token = self._get_next_token()
-        if token and self._get_word(token) == ':':
+        if self._checker(token,type_=WORD, compare_to=':'):
             self._type_routine()
             self._parameters_list_subroutine()
         else:
-            self._show_error(token, error_msg='Missing expected \':\'.')
-
-
-
+            self._show_error(token, error_msg='Missing expected \':\'. {Parameters_Routine}')
 
     def _parameters_list_subroutine(self):
+
         token = self._get_next_token(pop=False)
         if self._checker(token, type_=WORD, compare_to=';'):
             self._get_next_token()
             self._identifiers_list_routine()
             token = self._get_next_token()
-            if self._checker(token,type_=WORD,compare_to=':'):
+            if self._checker(token, type_=WORD,compare_to=':'):
                     self._type_routine()
                     self._parameters_list_subroutine()
             else:
-                self._show_error(token,error_msg='Missing expected \':\'.')
+                self._show_error(token, error_msg='Missing expected \':\'. {Parameters_SubRoutine}')
 
-    #
-    # def _compound_command_routine(self, capture_error=True):
+    def _compound_command_routine(self, capture_error=True):
+        token = self._get_next_token()
+        if self._checker(token, type_=WORD, compare_to='begin'):
+            self.optional_commands()
+            token = self._get_next_token()
+            if not self._checker(token, type_=WORD, compare_to='end'):
+                self._show_error(token,'Missing expected \'end\'. {Compound_Command_Routine}')
+        else:
+            self._show_error(token, 'Missing expected \'begin\'. {Compound_Command_Routine}')
+
+    def _optional_commands_routine(self, capture_error=True):
+        token = self._get_next_token(pop=False)
+        if not self._checker(token,type_=WORD, compare_to='end'):
+            self._command_list_routine()
+
+    def _command_list_routine(self):
+        self._command_routine()
+        self._command_list_subroutine()
+
+    def _command_list_subroutine(self):
+        token = self._get_next_token(pop=False)
+        if self._checker(token, type_=WORD, compare_to=';'):
+            self._get_next_token()
+            self._command_routine()
+            self._command_list_subroutine()
+
+    def _command_routine(self):
+        token_temp = self._get_next_token()
+        if self._checker(token_temp, type_=CLASSIFICATION, compare_to='identifier'):
+            token = self._get_next_token(pop=False)
+            if self._checker(token, type_=CLASSIFICATION, compare_to='assignment_operator'):
+                self._get_next_token()
+                self._expression_routine()
+            elif self._checker(token, type_=WORD, compare_to='('):
+                self._get_next_token()
+                self._list_expression_routine()
+                token = self._get_next_token()
+                if not self._checker(token, type_=WORD, compare_to=')'):
+                    self._show_error(token, error_msg='Missing expected \')\''
+                                                      ' closing the expression_list. {Command_Routine}')
+
+    def _list_expression_routine(self):
+        self._expression_routine()
+        self._list_expression_subroutine()
+
+    def _list_expression_subroutine(self):
+        token = self._get_next_token(pop=False)
+        if self._checker(token, type_=WORD, compare_to=','):
+            self._get_next_token()
+            self._expression_routine()
+            self._list_expression_subroutine()
+
+    def _expression_routine(self):
+        self._simple_expression_routine()
+        token = self._get_next_token(pop=False)
+        if token == self._checker(token, type_=CLASSIFICATION, compare_to='relational_operator'):
+            self._get_next_token()
+            self._simple_expression_routine()
+
+
+    def _simple_expression_routine(self):
+        token = self._get_next_token(pop=False)
+        if self._checker(token, type_=CLASSIFICATION, compare_to='sum_operator'):
+            self._get_next_token()
+            self._term_routine()
+            self._simple_expression_subroutine()
+        else:
+            self._term_routine()
+            self._simple_expression_subroutine()
+
+    def _simple_expression_subroutine(self):
+        token = self._get_next_token(pop=False)
+        if self._checker(token, type_=CLASSIFICATION, compare_to='sum_operator'):
+            self._get_next_token()
+            self._term_routine()
+            self._simple_expression_subroutine()
+
+    def _term_routine(self):
+        self._factor_routine()
+        self._term_subroutine()
+
+    def _term_subroutine(self):
+        token = self._get_next_token(pop=False)
+        if self._checker(token, type_=CLASSIFICATION, compare_to='multiply_operator'):
+            self._get_next_token()
+            self._factor_routine()
+            self._term_subroutine()
+
+    def _factor_routine(self):
+        token_temp = self._get_next_token()
+        if self._checker(token_temp, type_=CLASSIFICATION, compare_to='identifier'):
+            token = self._get_next_token(pop=False)
+            if self._checker(token, type_=WORD, compare_to='('):
+                self._get_next_token()
+                self._list_expression_routine()
+                token = self._get_next_token()
+                if not self._checker(token, type_=WORD, compare_to=')'):
+                    self._show_error(token, error_msg='Missing expected \')\''
+                                                      ' closing the expression_list. {Factor_Routine}')
+        elif self._checker(token_temp, type_=WORD, compare_to='('):
+            self._expression_routine()
+            token = self._get_next_token()
+            if not self._checker(token, type_=WORD, compare_to=')'):
+                self._show_error(token, error_msg='Missing expected \')\''
+                                                  ' closing the expression_list. {Factor_Routine}')
+        elif self._checker(token_temp, type_=WORD, compare_to='not'):
+            self._factor_routine()
+        else:
+            if not self._checker(token_temp, type_=CLASSIFICATION,belong_to=['integer','float']):
+                if not self._checker(token_temp, type_=WORD, belong_to=['true','false']):
+                    self._show_error(token_temp, error_msg='Missing expected factor.')
+
+
+
+
+
+
 
 
 
