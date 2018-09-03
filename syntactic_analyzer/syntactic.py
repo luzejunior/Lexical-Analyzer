@@ -127,7 +127,7 @@ class Syntactic:
         if self._checker(token, type_=WORD, compare_to=','):
             self._get_next_token() #it means the current token can be popped from list
             token = self._get_next_token()
-            if self._checker(token, type=CLASSIFICATION, compare_to='identifier'):
+            if self._checker(token, type_=CLASSIFICATION, compare_to='identifier'):
                 self._identifiers_list_subroutine()
             else:
                 self._show_error(token, error_msg='Missing expected identifier. {Identifier_SubList_Routine}')
@@ -360,15 +360,3 @@ class Syntactic:
             if not self._checker(token_temp, type_=CLASSIFICATION,belong_to=['integer','float']):
                 if not self._checker(token_temp, type_=WORD, belong_to=['true','false']):
                     self._show_error(token_temp, error_msg='Missing expected factor.')
-
-
-
-
-
-
-
-
-
-
-
-

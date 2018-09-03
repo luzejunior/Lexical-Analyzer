@@ -1,8 +1,8 @@
 program oi;   {programa exemplo
 fefesfsefsefsf}
 
-var oi: integer;
-    xau: boolean;
+var oi, tolete: integer;
+    xau, xuxubeleza: boolean;
 procedure oi (oi:integer; td:real);
     begin
 
@@ -18,5 +18,3 @@ procedure oi (oi:integer; td:real);
     end
 
     .
-
-
