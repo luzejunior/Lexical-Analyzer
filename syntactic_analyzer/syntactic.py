@@ -217,7 +217,7 @@ class Syntactic:
 
     def _compound_command_routine(self, capture_error=True):
         token = self._get_next_token(pop=False)
-        print(token)
+        # print(token)
         if self._checker(token, type_=WORD, compare_to='begin'):
             self._get_next_token()
             self._optional_commands_routine()
@@ -357,6 +357,6 @@ class Syntactic:
         elif self._checker(token_temp, type_=WORD, compare_to='not'):
             self._factor_routine()
         else:
-            if not self._checker(token_temp, type_=CLASSIFICATION,belong_to=['integer','float']):
+            if not self._checker(token_temp, type_=CLASSIFICATION,belong_to=['integer', 'float']):
                 if not self._checker(token_temp, type_=WORD, belong_to=['true','false']):
                     self._show_error(token_temp, error_msg='Missing expected factor.')
