@@ -285,6 +285,15 @@ class Syntactic:
             else:
                 self._show_error(token, 'Missing expected \'do\'.')
             return True
+        elif self._checker(token_temp, type_=WORD, compare_to='do'):
+            self._get_next_token()
+            self._command_routine()
+            token = self._get_next_token()
+            if self._checker(token, type_=WORD, compare_to='while'):
+                self._expression_routine()
+            else:
+                self._show_error(token, 'Missing expected \'while\'.')
+            return True
         elif not self._compound_command_routine(capture_error=False):
             if capture_error:
                 self._show_error(token_temp, error_msg='Missing expected command.')
