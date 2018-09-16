@@ -1,20 +1,28 @@
-program oi;   {programa exemplo
-fefesfsefsefsf}
+program teste;
+var
+    x:real;
+    c:boolean;
+    z:integer;
 
-var oi, tolete: integer;
-    xau, xuxubeleza: boolean;
-procedure oi (oi:integer; td:real);
+procedure limpar (y:integer; x:integer);
+var
+    z:boolean;
+begin
     begin
-
-    end;
-
-    begin
-        xau := (220);
-        while 1 > 4 do
-           begin
-
-           end
+        c := 2
 
     end
+end;
 
-    .
+procedure clean (y:integer);
+var x: integer;
+begin
+end;
+
+begin
+  clean(4);
+  z := 4;
+ do x:=3 while(x>2)
+
+end
+.
