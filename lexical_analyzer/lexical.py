@@ -8,11 +8,13 @@ class Lexical:
         self._line_counter = 1
         self._tokens_list = []
         self._delimiters = set(';,:()')
-        self._sum_operators = ['+','-','or']
+        self._sum_operators = ['+', '-', 'or']
         self._assignment_operator = [':=']
-        self._multiply_operators = ['*','/','and']
-        self._relational_operators = ['<','>','<=','>=','=','<>']
-        self._keywords = ['var', 'char', 'begin', 'end','program','integer','real','boolean','procedure','if','then', 'else','while', 'not','do']
+        self._multiply_operators = ['*', '/', 'and']
+        self._relational_operators = ['<', '>', '<=', '>=', '=', '<>']
+        self._keywords = ['var', 'char', 'begin', 'end', 'program', 'integer', 'real', 'boolean', 'procedure', 'if',
+                          'then', 'else', 'while', 'not', 'do']
+        self._booleans = ['true', 'false']
 
     def analyze(self):
         self._line_counter = 1
@@ -106,6 +108,8 @@ class Lexical:
                 self._dictionary.append([match.group(), 'multiply_operator', self._line_counter])
             elif word in self._keywords:
                 self._dictionary.append([match.group(), 'keyword', self._line_counter])
+            elif word in self._booleans:
+                self._dictionary.append([match.group(), 'boolean', self._line_counter])
             else:
                 self._dictionary.append([match.group(), 'identifier', self._line_counter])
                 self._reappend(word, match.group())

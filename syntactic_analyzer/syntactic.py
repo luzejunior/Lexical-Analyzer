@@ -1,13 +1,40 @@
 WORD = 0
 CLASSIFICATION = 1
 LINE = 2
-
+MARK = '$'
 
 class Syntactic:
     def __init__(self, lexical_input=['token', 'classification', 1]):
         self.lexical_input = lexical_input[::-1]
         self.success = False
         self._last_read = []
+        self._symbols_table = []
+
+    def _enter_scope(self):
+        self._symbols_table.append(MARK)
+
+    def _exit_scope(self):
+        if len(self._symbols_table) != 0:
+            symbol = self._symbols_table[-1]
+            if symbol != MARK:
+                self._symbols_table.pop()
+            self._symbols_table.pop()
+
+    def _validate_declaration(self, token):
+        for symbol in reversed(self._symbols_table):
+            if self._get_word(token) == symbol:
+                self._show_error(token, 'This symbol has already been declared in the current scope.'
+                                        ' {Validate Declaration Routine}')
+            elif symbol == MARK:
+                self._symbols_table.append(self._get_word(token))
+                break
+
+    def _check_symbol_usage(self, token):
+        word = self._get_word(token)
+        for symbol in reversed(self._symbols_table):
+            if symbol == word:
+                return
+        self._show_error(token, 'Symbol used hasn\'t been declared in the current scope. {Check Symbol Usage Routine}')
 
     def _show_error(self, token, error_msg=''):
         if not token:
@@ -59,8 +86,10 @@ class Syntactic:
     def _program_routine(self, capture_error=True):
         token = self._get_next_token()
         if self._checker(token, type_=WORD, compare_to='program'):
+            self._enter_scope()
             token = self._get_next_token()
             if self._checker(token, type_=CLASSIFICATION, compare_to='identifier'):
+                self._validate_declaration(token)
                 token = self._get_next_token()
                 if self._checker(token, type_=WORD, compare_to=';'):
                     # checking now for possible declarations
@@ -112,6 +141,7 @@ class Syntactic:
     def _identifiers_list_routine(self, capture_error=True):
         token = self._get_next_token(pop=False)
         if self._checker(token, type_=CLASSIFICATION, compare_to='identifier'):
+            self._validate_declaration(token)
             self._get_next_token()
             self._identifiers_list_subroutine()
             if not capture_error:
@@ -128,6 +158,7 @@ class Syntactic:
             self._get_next_token() #it means the current token can be popped from list
             token = self._get_next_token()
             if self._checker(token, type_=CLASSIFICATION, compare_to='identifier'):
+                self._validate_declaration(token)
                 self._identifiers_list_subroutine()
             else:
                 self._show_error(token, error_msg='Missing expected identifier. {Identifier_SubList_Routine}')
@@ -151,9 +182,11 @@ class Syntactic:
 
         token = self._get_next_token(pop=False)
         if self._checker(token, type_=WORD, compare_to='procedure'):
+            self._enter_scope()
             self._get_next_token()
             token = self._get_next_token()
             if self._checker(token, type_=CLASSIFICATION, compare_to='identifier'):
+                self._validate_declaration(token)
                 self._arguments_routines(capture_error=False)
                 token = self._get_next_token()
                 if self._checker(token, type_=WORD, compare_to=';'):
@@ -166,6 +199,7 @@ class Syntactic:
                             self._show_error(token, 'Missing possible expected \'var\'.')
                     self._sub_programs_routine()
                     self._compound_command_routine()
+                    self._exit_scope()
 
                 else:
                     self._show_error(token, error_msg='Missing expected \';\'. {SubProgram_Routine}')
@@ -223,7 +257,8 @@ class Syntactic:
             self._optional_commands_routine()
             token = self._get_next_token()
             if not self._checker(token, type_=WORD, compare_to='end'):
-                self._show_error(token,'Missing expected \'end\'. {Compound_Command_Routine}')
+                self._show_error(token, 'Missing expected \'end\'. {Compound_Command_Routine}')
+
             return True
         else:
             if capture_error:
@@ -250,6 +285,7 @@ class Syntactic:
     def _command_routine(self, capture_error=True):
         token_temp = self._get_next_token(pop=False)
         if self._checker(token_temp, type_=CLASSIFICATION, compare_to='identifier'):
+            self._check_symbol_usage(token_temp)
             self._get_next_token()
             token = self._get_next_token(pop=False)
             if self._checker(token, type_=CLASSIFICATION, compare_to='assignment_operator'):
@@ -289,11 +325,25 @@ class Syntactic:
             self._get_next_token()
             self._command_routine()
             token = self._get_next_token()
+<<<<<<< HEAD
             if self._checker(token, type_=WORD, compare_to='while'):
                 self._expression_routine()
             else:
                 self._show_error(token, 'Missing expected \'while\'.')
             return True
+=======
+            if self._checker(token, type_=WORD,compare_to='while'):
+                token = self._get_next_token()
+                if self._checker(token, type_=WORD, compare_to='('):
+                    self._expression_routine()
+                    token = self._get_next_token()
+                    if not self._checker(token, type_=WORD, compare_to=')'):
+                        self._show_error(token, 'Missing expected \')\'. {Command_Routine}')
+                else:
+                    self._show_error(token, 'Missing expected \'(\'. {Command_Routine}')
+            else:
+                self._show_error(token,'Missing expected \'while\' {Command_Routine}.')
+>>>>>>> 4c4ab9d626aa8ed54366b8fd9211eebbc1fee4ee
         elif not self._compound_command_routine(capture_error=False):
             if capture_error:
                 self._show_error(token_temp, error_msg='Missing expected command.')
@@ -349,6 +399,7 @@ class Syntactic:
     def _factor_routine(self):
         token_temp = self._get_next_token()
         if self._checker(token_temp, type_=CLASSIFICATION, compare_to='identifier'):
+            self._check_symbol_usage(token_temp)
             token = self._get_next_token(pop=False)
             if self._checker(token, type_=WORD, compare_to='('):
                 self._get_next_token()
