@@ -14,10 +14,11 @@ class Syntactic:
         self._symbols_table.append([MARK, "mark"])
 
     def _exit_scope(self):
-        if len(self._symbols_table) != 0:
+        if len(self._symbols_table) > 0:
             symbol = self._symbols_table[-1]
-            if symbol[0] != MARK:
+            while symbol[0] != MARK:
                 self._symbols_table.pop()
+                symbol = self._symbols_table[-1]
             self._symbols_table.pop()
 
     def _validate_declaration(self, token, type = ""):
