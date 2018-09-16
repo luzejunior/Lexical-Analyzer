@@ -11,30 +11,36 @@ class Syntactic:
         self._symbols_table = []
 
     def _enter_scope(self):
-        self._symbols_table.append(MARK)
+        self._symbols_table.append([MARK, "mark"])
 
     def _exit_scope(self):
         if len(self._symbols_table) != 0:
             symbol = self._symbols_table[-1]
-            if symbol != MARK:
+            if symbol[0] != MARK:
                 self._symbols_table.pop()
             self._symbols_table.pop()
 
-    def _validate_declaration(self, token):
-        for symbol in reversed(self._symbols_table):
+    def _validate_declaration(self, token, type = ""):
+        for symbol in reversed(self._symbols_table[0]):
             if self._get_word(token) == symbol:
                 self._show_error(token, 'This symbol has already been declared in the current scope.'
                                         ' {Validate Declaration Routine}')
             elif symbol == MARK:
-                self._symbols_table.append(self._get_word(token))
+                self._symbols_table.append([self._get_word(token), type])
                 break
 
     def _check_symbol_usage(self, token):
         word = self._get_word(token)
         for symbol in reversed(self._symbols_table):
-            if symbol == word:
+            if symbol[0] == word:
                 return
         self._show_error(token, 'Symbol used hasn\'t been declared in the current scope. {Check Symbol Usage Routine}')
+
+    def _update_symbol_list(self, type):
+        for symbol in self._symbols_table:
+            if symbol[1] == "":
+                symbol[1] = type
+        print(self._symbols_table)
 
     def _show_error(self, token, error_msg=''):
         if not token:
@@ -89,7 +95,7 @@ class Syntactic:
             self._enter_scope()
             token = self._get_next_token()
             if self._checker(token, type_=CLASSIFICATION, compare_to='identifier'):
-                self._validate_declaration(token)
+                self._validate_declaration(token, "program")
                 token = self._get_next_token()
                 if self._checker(token, type_=WORD, compare_to=';'):
                     # checking now for possible declarations
@@ -116,7 +122,8 @@ class Syntactic:
         self._identifiers_list_routine()
         token = self._get_next_token()
         if self._checker(token, type_=WORD, compare_to=':'):
-            self._type_routine()
+            t_type = self._type_routine()
+            self._update_symbol_list(t_type)
             token = self._get_next_token()
             if self._checker(token, type_=WORD, compare_to=';'):
                 self._variable_declaration_subroutine()
@@ -129,7 +136,8 @@ class Syntactic:
         if self._identifiers_list_routine(capture_error=False):
             token = self._get_next_token()
             if self._checker(token, type_=WORD, compare_to=':'):
-                self._type_routine()
+                t_type = self._type_routine()
+                self._update_symbol_list(t_type)
                 token = self._get_next_token()
                 if self._checker(token, type_=WORD, compare_to=';'):
                     self._variable_declaration_subroutine()
@@ -169,6 +177,12 @@ class Syntactic:
             if not self._checker(token, type_=WORD, compare_to='real'):
                 if not self._checker(token, type_=WORD, compare_to='boolean'):
                     self._show_error(token, error_msg='Missing expected type. {Type_Routine}')
+                else:
+                    return "boolean"
+            else:
+                return "real"
+        else:
+            return "integer"
 
     def _sub_programs_routine(self, capture_error=True):
         if self._sub_program_routine(capture_error=False):
@@ -186,7 +200,7 @@ class Syntactic:
             self._get_next_token()
             token = self._get_next_token()
             if self._checker(token, type_=CLASSIFICATION, compare_to='identifier'):
-                self._validate_declaration(token)
+                self._validate_declaration(token, "procedure")
                 self._arguments_routines(capture_error=False)
                 token = self._get_next_token()
                 if self._checker(token, type_=WORD, compare_to=';'):
@@ -232,7 +246,8 @@ class Syntactic:
         self._identifiers_list_routine()
         token = self._get_next_token()
         if self._checker(token, type_=WORD, compare_to=':'):
-            self._type_routine()
+            t_type = self._type_routine()
+            self._update_symbol_list(t_type)
             self._parameters_list_subroutine()
         else:
             self._show_error(token, error_msg='Missing expected \':\'. {Parameters_Routine}')
@@ -244,7 +259,8 @@ class Syntactic:
             self._identifiers_list_routine()
             token = self._get_next_token()
             if self._checker(token, type_=WORD,compare_to=':'):
-                    self._type_routine()
+                    t_type = self._type_routine()
+                    self._update_symbol_list(t_type)
                     self._parameters_list_subroutine()
             else:
                 self._show_error(token, error_msg='Missing expected \':\'. {Parameters_SubRoutine}')
@@ -325,13 +341,6 @@ class Syntactic:
             self._get_next_token()
             self._command_routine()
             token = self._get_next_token()
-<<<<<<< HEAD
-            if self._checker(token, type_=WORD, compare_to='while'):
-                self._expression_routine()
-            else:
-                self._show_error(token, 'Missing expected \'while\'.')
-            return True
-=======
             if self._checker(token, type_=WORD,compare_to='while'):
                 token = self._get_next_token()
                 if self._checker(token, type_=WORD, compare_to='('):
@@ -343,7 +352,6 @@ class Syntactic:
                     self._show_error(token, 'Missing expected \'(\'. {Command_Routine}')
             else:
                 self._show_error(token,'Missing expected \'while\' {Command_Routine}.')
->>>>>>> 4c4ab9d626aa8ed54366b8fd9211eebbc1fee4ee
         elif not self._compound_command_routine(capture_error=False):
             if capture_error:
                 self._show_error(token_temp, error_msg='Missing expected command.')
