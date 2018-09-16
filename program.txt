@@ -4,7 +4,7 @@ var
     c:boolean;
     z:integer;
 
-procedure limpar (y:integer; x:integer);
+procedure limpar (y:integer);
 var
     z:boolean;
 begin
@@ -14,13 +14,13 @@ begin
     end
 end;
 
-procedure clean (y:integer);
+procedure limpare (y:integer);
 var x: integer;
 begin
 end;
 
 begin
-  clean(4);
+  limpar(4);
   z := 4;
  do x:=3 while(x>2)
 

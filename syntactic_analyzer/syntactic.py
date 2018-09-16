@@ -3,6 +3,7 @@ CLASSIFICATION = 1
 LINE = 2
 MARK = '$'
 
+
 class Syntactic:
     def __init__(self, lexical_input=['token', 'classification', 1]):
         self.lexical_input = lexical_input[::-1]
@@ -22,11 +23,13 @@ class Syntactic:
             self._symbols_table.pop()
 
     def _validate_declaration(self, token, type = ""):
-        for symbol in reversed(self._symbols_table[0]):
-            if self._get_word(token) == symbol:
+
+        for symbol in reversed(self._symbols_table):
+
+            if self._get_word(token) == symbol[0]:
                 self._show_error(token, 'This symbol has already been declared in the current scope.'
                                         ' {Validate Declaration Routine}')
-            elif symbol == MARK:
+            elif symbol[0] == MARK:
                 self._symbols_table.append([self._get_word(token), type])
                 break
 
@@ -41,7 +44,7 @@ class Syntactic:
         for symbol in self._symbols_table:
             if symbol[1] == "":
                 symbol[1] = type
-        print(self._symbols_table)
+        # print(self._symbols_table)
 
     def _show_error(self, token, error_msg=''):
         if not token:
@@ -197,11 +200,12 @@ class Syntactic:
 
         token = self._get_next_token(pop=False)
         if self._checker(token, type_=WORD, compare_to='procedure'):
-            self._enter_scope()
+
             self._get_next_token()
             token = self._get_next_token()
             if self._checker(token, type_=CLASSIFICATION, compare_to='identifier'):
                 self._validate_declaration(token, "procedure")
+                self._enter_scope()
                 self._arguments_routines(capture_error=False)
                 token = self._get_next_token()
                 if self._checker(token, type_=WORD, compare_to=';'):
