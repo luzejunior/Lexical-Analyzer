@@ -86,7 +86,7 @@ class Lexical:
         # Analyzing if it is a float number
         match = re.match(r'\d+\.\d*', word)
         if match:
-            self._dictionary.append([match.group(), 'float', self._line_counter])
+            self._dictionary.append([match.group(), 'real', self._line_counter])
             self._reappend(word, match.group())
             return True
         # Analyzing if it is  a integer

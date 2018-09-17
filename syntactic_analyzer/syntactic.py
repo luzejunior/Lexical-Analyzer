@@ -2,6 +2,8 @@ WORD = 0
 CLASSIFICATION = 1
 LINE = 2
 MARK = '$'
+TOP = -1
+SUBTOP = -2
 
 
 class Syntactic:
@@ -10,6 +12,8 @@ class Syntactic:
         self.success = False
         self._last_read = []
         self._symbols_table = []
+        self._types_table = []
+        self._current_arithmetic_op = 'none'
 
     def _enter_scope(self):
         self._symbols_table.append([MARK, "mark"])
@@ -46,10 +50,92 @@ class Syntactic:
                 symbol[1] = type
         # print(self._symbols_table)
 
-    def _show_error(self, token, error_msg=''):
+    def _push_symbol_table(self, token='', type_=''):
+        if type_ != '':
+            self._types_table.append(type_)
+            return
+
+        word = self._get_word(token)
+        for symbol in reversed(self._symbols_table):
+            if symbol[0] == word:
+                self._types_table.append(symbol[1])
+                break
+
+    def _replace_symbol_table(self, new_type=''):
+        self._types_table.pop()
+        self._types_table.pop()
+        if new_type != '':
+            self._types_table.append(new_type)
+
+    def _relational_operation_handler(self):
+
+        if self._types_table[TOP] == 'integer' and self._types_table[SUBTOP] == 'integer':
+            self._replace_symbol_table('boolean')
+        elif self._types_table[TOP] == 'integer' and self._types_table[SUBTOP] == 'real':
+            self._replace_symbol_table('boolean')
+        elif self._types_table[TOP] == 'real' and self._types_table[SUBTOP] == 'integer':
+            self._replace_symbol_table('boolean')
+        elif self._types_table[TOP] == 'real' and self._types_table[SUBTOP] == 'real':
+            self._replace_symbol_table('boolean')
+        else:
+            self._show_error(error_msg='Type mismatched in relational operation.'
+                                       ' Comparison between \'' + self._types_table[TOP] +
+                                       '\' and \'' + self._types_table[SUBTOP] +
+                                       '\' not allowed. {Relational Operational Handler}')
+
+    def _arithmetic_operation_handler(self):
+        if self._current_arithmetic_op in ['and', 'or']:
+            if self._types_table[TOP] == 'boolean' and self._types_table[SUBTOP] == 'boolean':
+                self._types_table.pop()  # only one pop cause the type boolean must stay
+                #  in order to make type check if others operations
+            else:
+                self._show_error(error_msg='Type mismatched in logic operation. {Arithmetic Operation Handler}')
+        else:
+            if self._types_table[TOP] == 'integer' and self._types_table[SUBTOP] == 'integer':
+                self._replace_symbol_table('integer')
+            elif self._types_table[TOP] == 'integer' and self._types_table[SUBTOP] == 'real':
+                self._replace_symbol_table('real')
+            elif self._types_table[TOP] == 'real' and self._types_table[SUBTOP] == 'integer':
+                self._replace_symbol_table('real')
+            elif self._types_table[TOP] == 'real' and self._types_table[SUBTOP] == 'real':
+                self._replace_symbol_table('real')
+            else:
+                # print(self._types_table)
+                self._show_error(error_msg='Type mismatched in arithmetic operation. Operation between \''
+                                           + self._types_table[SUBTOP] +
+                                           '\' and \'' + self._types_table[TOP] +
+                                           '\' not allowed. {Arithmetic Operation Handler}')
+
+    def _assignment_operation_handler(self):
+        if self._types_table[TOP] == 'integer' and self._types_table[SUBTOP] == 'integer':
+            self._replace_symbol_table()
+        elif self._types_table[TOP] == 'integer' and self._types_table[SUBTOP] == 'real':
+            self._replace_symbol_table()
+        elif self._types_table[TOP] == 'real' and self._types_table[SUBTOP] == 'real':
+            self._replace_symbol_table()
+        elif self._types_table[TOP] == 'boolean' and self._types_table[SUBTOP] == 'boolean':
+            self._replace_symbol_table()
+        else:
+
+            self._show_error(error_msg='Type mismatched in assignment operation. Trying to assign \'' +
+                                       self._types_table[TOP] + '\' to \'' + self._types_table[SUBTOP] +
+                                       '\' {Assignment Operation Handler}')
+        self._types_table.clear()
+
+    def _condition_operation_handler(self):
+        if self._types_table[TOP] == 'boolean' and self._types_table[SUBTOP] == 'boolean':
+            self._replace_symbol_table()
+        else:
+            self._show_error(
+                error_msg='Type mismatched in condition operation. \'' +
+                          self._types_table[SUBTOP] + '\' and \'' +
+                          self._types_table[TOP] + '\'. {Condition Operation Handler}')
+        self._types_table.clear()
+
+    def _show_error(self, token='', error_msg=''):
         if not token:
-            error_msg = '[Syntax Error] Reached EOF.'\
-                        ' | LAST TOKEN: \'' + self._get_word(self._last_read)\
+            error_msg = '[Semantic Error]'\
+                        ' | LAST TOKEN READ: \'' + self._get_word(self._last_read)\
                         + '\' | LINE: ' + str(self._get_line(self._last_read)) + ' | Description:  ' + error_msg
         else:
             error_msg = '[Syntax Error] CURRENT TOKEN: \'' + self._get_word(token) + '\' | LINE: '\
@@ -112,6 +198,7 @@ class Syntactic:
                     token = self._get_next_token()
                     if self._checker(token, type_=WORD, compare_to='.'):
                         self.success = True
+                        # print(self._types_table)
                     else:
                         self._show_error(token, error_msg='Missing expected \'.\' finishing the program.')
 
@@ -215,7 +302,7 @@ class Syntactic:
                         self._variables_declaration_routine()
                     else:
                         if not token:
-                            self._show_error(token, 'Missing possible expected \'var\'.')
+                            self._show_error(token, error_msg='Missing possible expected \'var\'.')
                     self._sub_programs_routine()
                     self._compound_command_routine()
                     self._exit_scope()
@@ -238,11 +325,11 @@ class Syntactic:
             self._parameters_list_routine()
             token = self._get_next_token()
             if not self._checker(token, type_=WORD, compare_to=')'):
-                self._show_error(token, 'Missing expected \')\'. {Arguments_Routine}')
+                self._show_error(token, error_msg='Missing expected \')\'. {Arguments_Routine}')
             return True
         else:
             if capture_error:
-                self._show_error(token, 'Missing expected \'(\'. {Arguments_Routine}')
+                self._show_error(token, error_msg='Missing expected \'(\'. {Arguments_Routine}')
             else:
                 return False
 
@@ -263,7 +350,7 @@ class Syntactic:
             self._get_next_token()
             self._identifiers_list_routine()
             token = self._get_next_token()
-            if self._checker(token, type_=WORD,compare_to=':'):
+            if self._checker(token, type_=WORD, compare_to=':'):
                     t_type = self._type_routine()
                     self._update_symbol_list(t_type)
                     self._parameters_list_subroutine()
@@ -278,12 +365,12 @@ class Syntactic:
             self._optional_commands_routine()
             token = self._get_next_token()
             if not self._checker(token, type_=WORD, compare_to='end'):
-                self._show_error(token, 'Missing expected \'end\'. {Compound_Command_Routine}')
+                self._show_error(token, error_msg='Missing expected \'end\'. {Compound_Command_Routine}')
 
             return True
         else:
             if capture_error:
-                self._show_error(token, 'Missing expected \'begin\'. {Compound_Command_Routine}')
+                self._show_error(token, error_msg='Missing expected \'begin\'. {Compound_Command_Routine}')
             else:
                 return False
 
@@ -310,8 +397,10 @@ class Syntactic:
             self._get_next_token()
             token = self._get_next_token(pop=False)
             if self._checker(token, type_=CLASSIFICATION, compare_to='assignment_operator'):
+                self._push_symbol_table(token_temp)
                 self._get_next_token()
                 self._expression_routine()
+                self._assignment_operation_handler()
             elif self._checker(token, type_=WORD, compare_to='('):
                 self._get_next_token()
                 self._list_expression_routine()
@@ -320,27 +409,31 @@ class Syntactic:
                     self._show_error(token, error_msg='Missing expected \')\''
                                                       ' closing the expression_list. {Command_Routine}')
             return True
-        elif self._checker(token_temp,type_=WORD,compare_to='if'):
+        elif self._checker(token_temp, type_=WORD, compare_to='if'):
             self._get_next_token()
+            self._push_symbol_table(type_='boolean')
             self._expression_routine()
+            self._condition_operation_handler()
             token = self._get_next_token()
             if self._checker(token, type_=WORD, compare_to='then'):
                 self._command_routine()
                 token = self._get_next_token(pop=False)
-                if self._checker(token,type_=WORD, compare_to='else'):
+                if self._checker(token, type_=WORD, compare_to='else'):
                     self._get_next_token()
                     self._command_routine()
             else:
-                self._show_error(token, 'Missing expected \'then\'.')
+                self._show_error(token, error_msg='Missing expected \'then\'.')
             return True
         elif self._checker(token_temp, type_=WORD, compare_to='while'):
             self._get_next_token()
+            self._push_symbol_table('boolean')
             self._expression_routine()
+            self._condition_operation_handler()
             token = self._get_next_token()
             if self._checker(token, type_=WORD, compare_to='do'):
                 self._command_routine()
             else:
-                self._show_error(token, 'Missing expected \'do\'.')
+                self._show_error(token, error_msg='Missing expected \'do\'.')
             return True
         elif self._checker(token_temp, type_=WORD, compare_to='do'):
             self._get_next_token()
@@ -352,11 +445,11 @@ class Syntactic:
                     self._expression_routine()
                     token = self._get_next_token()
                     if not self._checker(token, type_=WORD, compare_to=')'):
-                        self._show_error(token, 'Missing expected \')\'. {Command_Routine}')
+                        self._show_error(token, error_msg='Missing expected \')\'. {Command_Routine}')
                 else:
-                    self._show_error(token, 'Missing expected \'(\'. {Command_Routine}')
+                    self._show_error(token, error_msg='Missing expected \'(\'. {Command_Routine}')
             else:
-                self._show_error(token,'Missing expected \'while\' {Command_Routine}.')
+                self._show_error(token, error_msg='Missing expected \'while\' {Command_Routine}.')
         elif not self._compound_command_routine(capture_error=False):
             if capture_error:
                 self._show_error(token_temp, error_msg='Missing expected command.')
@@ -380,10 +473,12 @@ class Syntactic:
         if self._checker(token, type_=CLASSIFICATION, compare_to='relational_operator'):
             self._get_next_token()
             self._simple_expression_routine()
+            self._relational_operation_handler()
 
     def _simple_expression_routine(self):
         token = self._get_next_token(pop=False)
         if self._checker(token, type_=CLASSIFICATION, compare_to='sum_operator'):
+            self._current_arithmetic_op = self._get_word(token)
             self._get_next_token()
             self._term_routine()
             self._simple_expression_subroutine()
@@ -394,8 +489,10 @@ class Syntactic:
     def _simple_expression_subroutine(self):
         token = self._get_next_token(pop=False)
         if self._checker(token, type_=CLASSIFICATION, compare_to='sum_operator'):
+            self._current_arithmetic_op = self._get_word(token)
             self._get_next_token()
             self._term_routine()
+            self._arithmetic_operation_handler()
             self._simple_expression_subroutine()
 
     def _term_routine(self):
@@ -405,14 +502,17 @@ class Syntactic:
     def _term_subroutine(self):
         token = self._get_next_token(pop=False)
         if self._checker(token, type_=CLASSIFICATION, compare_to='multiply_operator'):
+            self._current_arithmetic_op = self._get_word(token)
             self._get_next_token()
             self._factor_routine()
+            self._arithmetic_operation_handler()
             self._term_subroutine()
 
     def _factor_routine(self):
         token_temp = self._get_next_token()
         if self._checker(token_temp, type_=CLASSIFICATION, compare_to='identifier'):
             self._check_symbol_usage(token_temp)
+            self._push_symbol_table(token_temp)
             token = self._get_next_token(pop=False)
             if self._checker(token, type_=WORD, compare_to='('):
                 self._get_next_token()
@@ -430,6 +530,7 @@ class Syntactic:
         elif self._checker(token_temp, type_=WORD, compare_to='not'):
             self._factor_routine()
         else:
-            if not self._checker(token_temp, type_=CLASSIFICATION,belong_to=['integer', 'float']):
-                if not self._checker(token_temp, type_=WORD, belong_to=['true','false']):
+            if not self._checker(token_temp, type_=CLASSIFICATION, belong_to=['integer', 'real']):
+                if not self._checker(token_temp, type_=WORD, belong_to=['true', 'false']):
                     self._show_error(token_temp, error_msg='Missing expected factor.')
+            self._push_symbol_table(token_temp, self._get_classification(token_temp))
