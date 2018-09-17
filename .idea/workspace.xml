@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="4f9c6e8b-faee-4e3c-9861-43e86e9a0f7b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lexical_analyzer/lexical.py" beforeDir="false" afterPath="$PROJECT_DIR$/lexical_analyzer/lexical.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/program.txt" beforeDir="false" afterPath="$PROJECT_DIR$/program.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/syntactic_analyzer/syntactic.py" beforeDir="false" afterPath="$PROJECT_DIR$/syntactic_analyzer/syntactic.py" afterDir="false" />
     </list>
@@ -15,7 +14,7 @@
   </component>
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/Lexical_Analyzer$main.coverage" NAME="main Coverage Results" MODIFIED="1534356041950" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Lexical_Analyzer$compiler.coverage" NAME="compiler Coverage Results" MODIFIED="1537185557342" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Lexical_Analyzer$compiler.coverage" NAME="compiler Coverage Results" MODIFIED="1537192469388" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="FUSProjectUsageTrigger">
     <session id="-453237202">
@@ -47,14 +46,14 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="1" />
-          <entry key="py" value="23502" />
-          <entry key="txt" value="1501" />
+          <entry key="py" value="23584" />
+          <entry key="txt" value="1565" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="PLAIN_TEXT" value="1502" />
-          <entry key="Python" value="23501" />
+          <entry key="PLAIN_TEXT" value="1566" />
+          <entry key="Python" value="23583" />
           <entry key="RegExp" value="1" />
         </counts>
       </usages-collector>
@@ -65,8 +64,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lexical_analyzer/lexical.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1320">
-              <caret line="88" column="57" selection-start-line="88" selection-start-column="57" selection-end-line="88" selection-end-column="57" />
+            <state relative-caret-position="-630">
+              <caret line="69" column="39" selection-start-line="69" selection-start-column="39" selection-end-line="69" selection-end-column="39" />
             </state>
           </provider>
         </entry>
@@ -83,25 +82,25 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/syntactic_analyzer/syntactic.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1245">
-              <caret line="83" column="39" selection-start-line="83" selection-start-column="39" selection-end-line="83" selection-end-column="39" />
+            <state relative-caret-position="320">
+              <caret line="136" lean-forward="true" selection-start-line="136" selection-end-line="136" />
               <folding>
-                <marker date="1537185354116" expanded="true" signature="2093:2237" ph="..." />
-                <marker date="1537185354116" expanded="true" signature="3241:6087" ph="..." />
-                <marker date="1537185354116" expanded="true" signature="5642:6087" ph="..." />
+                <marker date="1537192458755" expanded="true" signature="2093:2237" ph="..." />
+                <marker date="1537192458755" expanded="true" signature="3241:6324" ph="..." />
+                <marker date="1537192458755" expanded="true" signature="5879:6324" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/program.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="22" column="8" selection-start-line="22" selection-start-column="8" selection-end-line="22" selection-end-column="8" />
+            <state relative-caret-position="435">
+              <caret line="29" column="14" selection-start-line="29" selection-start-column="14" selection-end-line="29" selection-end-column="14" />
             </state>
           </provider>
         </entry>
@@ -117,12 +116,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>sum_operators</find>
-      <find>assignment_operator</find>
-      <find>dict2</find>
-      <find>key_words</find>
-      <find>not</find>
-      <find>print</find>
       <find>comma</find>
       <find>command</find>
       <find>35</find>
@@ -147,6 +140,12 @@
       <find>command_rou</find>
       <find>print(self._types_table)</find>
       <find>assign</find>
+      <find>relat</find>
+      <find>=</find>
+      <find>Type misma</find>
+      <find>rela</find>
+      <find>do</find>
+      <find>clea</find>
     </findStrings>
     <replaceStrings>
       <replace>_keywords</replace>
@@ -348,8 +347,8 @@
     <entry file="file://$PROJECT_DIR$/main.py" />
     <entry file="file://$PROJECT_DIR$/lexical_analyzer/lexical.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1320">
-          <caret line="88" column="57" selection-start-line="88" selection-start-column="57" selection-end-line="88" selection-end-column="57" />
+        <state relative-caret-position="-630">
+          <caret line="69" column="39" selection-start-line="69" selection-start-column="39" selection-end-line="69" selection-end-column="39" />
         </state>
       </provider>
     </entry>
@@ -363,22 +362,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/program.txt">
+    <entry file="file://$PROJECT_DIR$/syntactic_analyzer/syntactic.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" column="8" selection-start-line="22" selection-start-column="8" selection-end-line="22" selection-end-column="8" />
+        <state relative-caret-position="320">
+          <caret line="136" lean-forward="true" selection-start-line="136" selection-end-line="136" />
+          <folding>
+            <marker date="1537192458755" expanded="true" signature="2093:2237" ph="..." />
+            <marker date="1537192458755" expanded="true" signature="3241:6324" ph="..." />
+            <marker date="1537192458755" expanded="true" signature="5879:6324" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/syntactic_analyzer/syntactic.py">
+    <entry file="file://$PROJECT_DIR$/program.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1245">
-          <caret line="83" column="39" selection-start-line="83" selection-start-column="39" selection-end-line="83" selection-end-column="39" />
-          <folding>
-            <marker date="1537185354116" expanded="true" signature="2093:2237" ph="..." />
-            <marker date="1537185354116" expanded="true" signature="3241:6087" ph="..." />
-            <marker date="1537185354116" expanded="true" signature="5642:6087" ph="..." />
-          </folding>
+        <state relative-caret-position="435">
+          <caret line="29" column="14" selection-start-line="29" selection-start-column="14" selection-end-line="29" selection-end-column="14" />
         </state>
       </provider>
     </entry>

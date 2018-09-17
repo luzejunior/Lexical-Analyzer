@@ -89,7 +89,10 @@ class Syntactic:
                 self._types_table.pop()  # only one pop cause the type boolean must stay
                 #  in order to make type check if others operations
             else:
-                self._show_error(error_msg='Type mismatched in logic operation. {Arithmetic Operation Handler}')
+                self._show_error(error_msg='Type mismatched in logic operation. Operation between \''
+                                           + self._types_table[SUBTOP] +
+                                           '\' and \'' + self._types_table[TOP] +
+                                           '\' not allowed. {Arithmetic Operation Handler}')
         else:
             if self._types_table[TOP] == 'integer' and self._types_table[SUBTOP] == 'integer':
                 self._replace_symbol_table('integer')
@@ -158,11 +161,14 @@ class Syntactic:
         else:
             return self.lexical_input[-1]
 
-    def _get_word(self, token=[]):
+    def _get_word(self, token):
         return token[WORD]
 
-    def _get_line(self, token=[]):
+    def _get_line(self, token):
         return token[LINE]
+
+    def _get_classification(self, token):
+        return token[CLASSIFICATION]
 
     def _checker(self, token, type_=WORD, compare_to='', belong_to=[]):
         if belong_to:
@@ -170,16 +176,13 @@ class Syntactic:
         else:
             return token and token[type_] == compare_to
 
-    def _get_classification(self, token=[]):
-        return token[CLASSIFICATION]
-
     def start(self):
         # print(self.lexical_input)
         self._program_routine()
         if self.success:
             print('Your program syntax is correct.')
 
-    def _program_routine(self, capture_error=True):
+    def _program_routine(self):
         token = self._get_next_token()
         if self._checker(token, type_=WORD, compare_to='program'):
             self._enter_scope()
@@ -426,7 +429,7 @@ class Syntactic:
             return True
         elif self._checker(token_temp, type_=WORD, compare_to='while'):
             self._get_next_token()
-            self._push_symbol_table('boolean')
+            self._push_symbol_table(type_='boolean')
             self._expression_routine()
             self._condition_operation_handler()
             token = self._get_next_token()
@@ -439,10 +442,12 @@ class Syntactic:
             self._get_next_token()
             self._command_routine()
             token = self._get_next_token()
-            if self._checker(token, type_=WORD,compare_to='while'):
+            if self._checker(token, type_=WORD, compare_to='while'):
                 token = self._get_next_token()
                 if self._checker(token, type_=WORD, compare_to='('):
+                    self._push_symbol_table(type_='boolean')
                     self._expression_routine()
+                    self._condition_operation_handler()
                     token = self._get_next_token()
                     if not self._checker(token, type_=WORD, compare_to=')'):
                         self._show_error(token, error_msg='Missing expected \')\'. {Command_Routine}')
