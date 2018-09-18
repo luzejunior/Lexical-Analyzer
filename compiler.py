@@ -5,7 +5,6 @@ from syntactic_analyzer.syntactic import Syntactic
 def main():
     lexical = Lexical('program.txt')
     lexical.analyze()
-    print(lexical.get_list())
     syntactic = Syntactic(lexical.get_list())
     syntactic.start()
 

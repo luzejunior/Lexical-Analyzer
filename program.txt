@@ -4,23 +4,30 @@ var
     c:boolean;
     z:integer;
 
+procedure cagar(x:real);
+    begin
+
+    end;
 procedure limpar (y:integer);
 var
     z:boolean;
 begin
     begin
         c := false
+        //limpar(2)
 
     end
 end;
 
-procedure limpare (y:integer);
+procedure limpare (y:integer;b:integer);
 var x: integer;
 begin
+cagar(2.5)
 end;
 
 begin
-  limpar(4);
+  cagar(445);
+  limpar(2);
   z := 20 + 30;
   c := true or false;
   x := 4 + 4 * (4.5 + 2.4);

@@ -14,6 +14,8 @@ class Syntactic:
         self._symbols_table = []
         self._types_table = []
         self._current_arithmetic_op = 'none'
+        self._arguments = []
+        self._current_procedure = []
 
     def _enter_scope(self):
         self._symbols_table.append([MARK, "mark"])
@@ -44,11 +46,10 @@ class Syntactic:
                 return
         self._show_error(token, 'Symbol used hasn\'t been declared in the current scope. {Check Symbol Usage Routine}')
 
-    def _update_symbol_list(self, type):
+    def _update_symbol_list(self, type_):
         for symbol in self._symbols_table:
             if symbol[1] == "":
-                symbol[1] = type
-        # print(self._symbols_table)
+                symbol[1] = type_
 
     def _push_symbol_table(self, token='', type_=''):
         if type_ != '':
@@ -135,6 +136,61 @@ class Syntactic:
                           self._types_table[TOP] + '\'. {Condition Operation Handler}')
         self._types_table.clear()
 
+    def _procedure_activation_handler(self):
+
+        procedure_arguments = []
+
+        """
+        trying to find the correct procedure and its arguments
+        keeping only the arguments in the list
+        """
+        for index, sym in enumerate(reversed(self._arguments)):
+            if sym[0] == self._current_procedure[0]:
+                procedure_arguments = self._arguments[0:len(self._arguments)-index-1]
+                for i, symbol in enumerate(reversed(procedure_arguments)):
+                    if symbol[1] == 'procedure':
+                        procedure_arguments = procedure_arguments[len(procedure_arguments) - i:]
+                        break
+                break
+
+        if procedure_arguments:
+            if len(procedure_arguments) != len(self._types_table):
+                self._show_error(error_msg='Different number of passed arguments'
+                                           ' from function declaration during activation'
+                                           ' of procedure \'' + self._current_procedure[0] +
+                                 '\'. {Procedure Activation Handler}')
+
+            self._types_table = self._types_table[::-1]
+
+            """
+            comparing argument to argument and checking its types
+            """
+            while len(procedure_arguments) > 0:
+                symbol_argument = procedure_arguments[-1]
+                symbol_calling = self._types_table[-1]
+                if (symbol_argument[1] == symbol_calling) or \
+                        (symbol_argument[1] == 'real' and symbol_calling == 'integer'):
+                    self._types_table.pop()
+                    procedure_arguments.pop()
+                else:
+                    self._show_error(error_msg= 'Type mismatched during calling of the function \'' +
+                                     self._current_procedure[0] + '\'. Types: \'' + symbol_calling +
+                                     '\' and ' + '\'' + symbol_argument[1] + '\'. {Procedure Activation Handler}')
+
+    def _set_current_procedure(self, token):
+        self._current_procedure = [self._get_word(token), 'procedure']
+
+    def _append_arguments(self):
+        last_row = False
+        for symbol in reversed(self._symbols_table):
+            if last_row:
+                self._arguments.append(symbol)
+                break
+            if symbol[0] != MARK:
+                self._arguments.append(symbol)
+            else:
+                last_row = True
+
     def _show_error(self, token='', error_msg=''):
         if not token:
             error_msg = '[Semantic Error]'\
@@ -182,6 +238,7 @@ class Syntactic:
         if self.success:
             print('Your program syntax is correct.')
 
+
     def _program_routine(self):
         token = self._get_next_token()
         if self._checker(token, type_=WORD, compare_to='program'):
@@ -201,7 +258,6 @@ class Syntactic:
                     token = self._get_next_token()
                     if self._checker(token, type_=WORD, compare_to='.'):
                         self.success = True
-                        # print(self._types_table)
                     else:
                         self._show_error(token, error_msg='Missing expected \'.\' finishing the program.')
 
@@ -297,6 +353,7 @@ class Syntactic:
                 self._validate_declaration(token, "procedure")
                 self._enter_scope()
                 self._arguments_routines(capture_error=False)
+                # print(self._symbols_table)
                 token = self._get_next_token()
                 if self._checker(token, type_=WORD, compare_to=';'):
                     token = self._get_next_token(pop=False)
@@ -326,6 +383,8 @@ class Syntactic:
         if self._checker(token, type_=WORD, compare_to='('):
             self._get_next_token()
             self._parameters_list_routine()
+            self._append_arguments()
+
             token = self._get_next_token()
             if not self._checker(token, type_=WORD, compare_to=')'):
                 self._show_error(token, error_msg='Missing expected \')\'. {Arguments_Routine}')
@@ -405,12 +464,16 @@ class Syntactic:
                 self._expression_routine()
                 self._assignment_operation_handler()
             elif self._checker(token, type_=WORD, compare_to='('):
+                self._set_current_procedure(token_temp)
                 self._get_next_token()
                 self._list_expression_routine()
                 token = self._get_next_token()
                 if not self._checker(token, type_=WORD, compare_to=')'):
                     self._show_error(token, error_msg='Missing expected \')\''
                                                       ' closing the expression_list. {Command_Routine}')
+                else:
+                    self._procedure_activation_handler()
+
             return True
         elif self._checker(token_temp, type_=WORD, compare_to='if'):
             self._get_next_token()
