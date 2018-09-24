@@ -12,6 +12,7 @@ class Syntactic:
         self.success = False
         self._last_read = []
         self._symbols_table = []
+        self._symbol_arguments_table = []
         self._types_table = []
         self._current_arithmetic_op = 'none'
         self._arguments = []
@@ -33,9 +34,12 @@ class Syntactic:
         for symbol in reversed(self._symbols_table):
 
             if self._get_word(token) == symbol[0]:
-                self._show_error(token, 'This symbol has already been declared in the current scope.'
+                if (type == 'procedure' and symbol[1] != 'procedure') or (type != 'procedure' and symbol[1] == 'procedure') :
+                  print('oi')
+                else:
+                    self._show_error(token, 'This symbol has already been declared in the current scope.'
                                         ' {Validate Declaration Routine}')
-            elif symbol[0] == MARK:
+            if symbol[0] == MARK:
                 self._symbols_table.append([self._get_word(token), type])
                 break
 
@@ -56,11 +60,17 @@ class Syntactic:
             self._types_table.append(type_)
             return
 
+        found = False
         word = self._get_word(token)
         for symbol in reversed(self._symbols_table):
-            if symbol[0] == word:
+            if symbol[0] == word and symbol[1] != 'procedure':
                 self._types_table.append(symbol[1])
+                found = True
                 break
+
+        if not found:
+            self._show_error(token,
+                             'Symbol used hasn\'t been declared in the current scope. {Check Symbol Usage Routine}')
 
     def _replace_symbol_table(self, new_type=''):
         self._types_table.pop()

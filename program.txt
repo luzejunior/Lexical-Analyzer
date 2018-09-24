@@ -3,12 +3,19 @@ var
     x:real;
     c:boolean;
     z:integer;
+    clean: boolean;
+    dirty: integer;
 
-procedure cagar(x:real);
+procedure dirty(y:real);
+    var x: real;
+
     begin
 
+
+
+
     end;
-procedure limpar (y:integer);
+procedure clean (y:integer);
 var
     z:boolean;
 begin
@@ -20,14 +27,15 @@ begin
 end;
 
 procedure limpare (y:integer;b:integer);
-var x: integer;
+var c: integer;
 begin
-cagar(2.5)
+    clean := true;
+    dirty(25)
 end;
 
 begin
-  cagar(445);
-  limpar(2);
+  dirty(445);
+  clean(2);
   z := 20 + 30;
   c := true or false;
   x := 4 + 4 * (4.5 + 2.4);

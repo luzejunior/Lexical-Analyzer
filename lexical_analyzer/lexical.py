@@ -34,13 +34,7 @@ class Lexical:
 
     def _read_line(self, line=''):
         line = re.sub(r'//.*', '', line)
-        # line = new_patterns(line) #for new patterns that might be added
-        # symbols = re.findall(r':=|<>|<=|>=|[=;,><+\-*/(){}]|[^\w\s\.]', line)
-        # no_symbols = re.sub(r'(\w+)*[,;=:><+\-*/](\w+)*', r'\1 \2', line) # removing symbols except for dot '.'
-        # no_symbols_tokens = no_symbols.split() #spliting into tokens
         self._analyzer(line)
-        # analyze(no_symbols_tokens)
-        # analyze_symbols(symbols)
 
     def _process_comments(self, source_code=''):
         counter = 0

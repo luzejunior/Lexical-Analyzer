@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="4f9c6e8b-faee-4e3c-9861-43e86e9a0f7b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/compiler.py" beforeDir="false" afterPath="$PROJECT_DIR$/compiler.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lexical_analyzer/lexical.py" beforeDir="false" afterPath="$PROJECT_DIR$/lexical_analyzer/lexical.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/program.txt" beforeDir="false" afterPath="$PROJECT_DIR$/program.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/syntactic_analyzer/syntactic.py" beforeDir="false" afterPath="$PROJECT_DIR$/syntactic_analyzer/syntactic.py" afterDir="false" />
     </list>
@@ -15,22 +15,22 @@
   </component>
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/Lexical_Analyzer$main.coverage" NAME="main Coverage Results" MODIFIED="1534356041950" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Lexical_Analyzer$compiler.coverage" NAME="compiler Coverage Results" MODIFIED="1537239223591" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Lexical_Analyzer$compiler.coverage" NAME="compiler Coverage Results" MODIFIED="1537794963923" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="FUSProjectUsageTrigger">
     <session id="-453237202">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="13" />
-          <entry key="project.open.time.1" value="3" />
+          <entry key="project.closed" value="16" />
+          <entry key="project.open.time.1" value="4" />
           <entry key="project.open.time.10" value="3" />
-          <entry key="project.open.time.11" value="2" />
+          <entry key="project.open.time.11" value="4" />
           <entry key="project.open.time.12" value="2" />
           <entry key="project.open.time.14" value="1" />
           <entry key="project.open.time.15" value="2" />
           <entry key="project.open.time.17" value="2" />
           <entry key="project.open.time.5" value="1" />
-          <entry key="project.opened" value="16" />
+          <entry key="project.opened" value="19" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -48,14 +48,14 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="1" />
-          <entry key="py" value="25912" />
-          <entry key="txt" value="1747" />
+          <entry key="py" value="26269" />
+          <entry key="txt" value="1963" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="PLAIN_TEXT" value="1748" />
-          <entry key="Python" value="25911" />
+          <entry key="PLAIN_TEXT" value="1964" />
+          <entry key="Python" value="26268" />
           <entry key="RegExp" value="1" />
         </counts>
       </usages-collector>
@@ -66,8 +66,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lexical_analyzer/lexical.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1035">
-              <caret line="69" column="39" selection-start-line="69" selection-start-column="39" selection-end-line="69" selection-end-column="39" />
+            <state relative-caret-position="555">
+              <caret line="37" selection-start-line="37" selection-end-line="37" />
             </state>
           </provider>
         </entry>
@@ -87,14 +87,14 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/syntactic_analyzer/syntactic.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="244">
-              <caret line="275" column="25" selection-start-line="275" selection-start-column="18" selection-end-line="275" selection-end-column="25" />
+            <state relative-caret-position="-2453">
+              <caret line="72" column="116" selection-start-line="72" selection-start-column="116" selection-end-line="72" selection-end-column="116" />
               <folding>
-                <marker date="1537239212342" expanded="true" signature="2124:2268" ph="..." />
-                <marker date="1537239212342" expanded="true" signature="3272:8834" ph="..." />
-                <marker date="1537239212342" expanded="true" signature="5910:8834" ph="..." />
-                <marker date="1537239212342" expanded="true" signature="8420:8497" ph="..." />
-                <marker date="1537239212342" expanded="true" signature="8525:8834" ph="..." />
+                <marker date="1537365214084" expanded="true" signature="2602:2746" ph="..." />
+                <marker date="1537365214084" expanded="true" signature="3750:9312" ph="..." />
+                <marker date="1537365214084" expanded="true" signature="6388:9312" ph="..." />
+                <marker date="1537365214084" expanded="true" signature="8898:8975" ph="..." />
+                <marker date="1537365214084" expanded="true" signature="9003:9312" ph="..." />
               </folding>
             </state>
           </provider>
@@ -103,8 +103,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/program.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="24" column="8" selection-start-line="24" selection-start-column="8" selection-end-line="24" selection-end-column="8" />
+            <state relative-caret-position="465">
+              <caret line="31" column="17" selection-start-line="31" selection-start-column="17" selection-end-line="31" selection-end-column="17" />
             </state>
           </provider>
         </entry>
@@ -120,7 +120,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>procedur</find>
       <find>exit</find>
       <find>print(</find>
       <find>true</find>
@@ -150,6 +149,7 @@
       <find>command_routine</find>
       <find>type</find>
       <find>update_</find>
+      <find>validate</find>
     </findStrings>
     <replaceStrings>
       <replace>_keywords</replace>
@@ -165,9 +165,9 @@
         <option value="$PROJECT_DIR$/Lexical Analyzer/lexical.py" />
         <option value="$PROJECT_DIR$/__init__.py" />
         <option value="$PROJECT_DIR$/syntactic_analyzer/syntatic.py" />
-        <option value="$PROJECT_DIR$/lexical_analyzer/lexical.py" />
         <option value="$PROJECT_DIR$/compiler.py" />
         <option value="$PROJECT_DIR$/syntactic_analyzer/syntactic.py" />
+        <option value="$PROJECT_DIR$/lexical_analyzer/lexical.py" />
         <option value="$PROJECT_DIR$/program.txt" />
       </list>
     </option>
@@ -294,15 +294,14 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="64" y="-11" width="2497" height="1092" extended-state="6" />
-    <editor active="true" />
+    <frame x="64" y="-11" width="1303" height="780" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.074724376" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.07729083" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.14853556" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.14751554" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.33577406" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -356,8 +355,8 @@
     <entry file="file://$PROJECT_DIR$/main.py" />
     <entry file="file://$PROJECT_DIR$/lexical_analyzer/lexical.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1035">
-          <caret line="69" column="39" selection-start-line="69" selection-start-column="39" selection-end-line="69" selection-end-column="39" />
+        <state relative-caret-position="555">
+          <caret line="37" selection-start-line="37" selection-end-line="37" />
         </state>
       </provider>
     </entry>
@@ -373,22 +372,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/syntactic_analyzer/syntactic.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="244">
-          <caret line="275" column="25" selection-start-line="275" selection-start-column="18" selection-end-line="275" selection-end-column="25" />
+        <state relative-caret-position="-2453">
+          <caret line="72" column="116" selection-start-line="72" selection-start-column="116" selection-end-line="72" selection-end-column="116" />
           <folding>
-            <marker date="1537239212342" expanded="true" signature="2124:2268" ph="..." />
-            <marker date="1537239212342" expanded="true" signature="3272:8834" ph="..." />
-            <marker date="1537239212342" expanded="true" signature="5910:8834" ph="..." />
-            <marker date="1537239212342" expanded="true" signature="8420:8497" ph="..." />
-            <marker date="1537239212342" expanded="true" signature="8525:8834" ph="..." />
+            <marker date="1537365214084" expanded="true" signature="2602:2746" ph="..." />
+            <marker date="1537365214084" expanded="true" signature="3750:9312" ph="..." />
+            <marker date="1537365214084" expanded="true" signature="6388:9312" ph="..." />
+            <marker date="1537365214084" expanded="true" signature="8898:8975" ph="..." />
+            <marker date="1537365214084" expanded="true" signature="9003:9312" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/program.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="24" column="8" selection-start-line="24" selection-start-column="8" selection-end-line="24" selection-end-column="8" />
+        <state relative-caret-position="465">
+          <caret line="31" column="17" selection-start-line="31" selection-start-column="17" selection-end-line="31" selection-end-column="17" />
         </state>
       </provider>
     </entry>
